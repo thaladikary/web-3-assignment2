@@ -1,21 +1,11 @@
-import { useContext, useEffect,useState} from "react";
+import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../Context";
+import FilterSection from "../home_components/FilterSection";
+import RacesSection from "../home_components/RacesSection";
 
 const Home = () => {
-  const [f1Data,setf1Data] = useState([])
-
-
-  useEffect( () => {
-   const  url = "https://w2024-assign1.glitch.me/api/seasons";
-    fetch (url)
-    .then( resp => resp.json() )
-    .then( data => { setf1Data(data) })
-    }, [] );
-
-
-  console.log(f1Data)
-
-  return <h1>Home Page</h1>;
+  const { selectedSeason, setSelectedSeason } = useContext(AppContext);
+  return <div>{selectedSeason ? <RacesSection /> : <FilterSection />}</div>;
 };
 
 export default Home;
