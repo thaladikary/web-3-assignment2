@@ -8,6 +8,7 @@ export const ContextProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [seasons, setSeasons] = useState();
   const [selectedSeason, setSelectedSeason] = useState();
+  const [favorites, setFavorites] = useState();
 
   return (
     <AppContext.Provider
@@ -18,6 +19,8 @@ export const ContextProvider = ({ children }) => {
         setSeasons,
         selectedSeason,
         setSelectedSeason,
+        favorites,
+        setFavorites,
       }}
     >
       {children}

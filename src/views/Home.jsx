@@ -5,6 +5,7 @@ import RacesSection from "../home_components/RacesSection";
 
 const Home = () => {
   const { selectedSeason, setSelectedSeason } = useContext(AppContext);
+
   return <div>{selectedSeason ? <RacesSection /> : <FilterSection />}</div>;
 };
 
