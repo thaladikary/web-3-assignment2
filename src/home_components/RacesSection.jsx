@@ -13,23 +13,33 @@ import {
   Button,
 } from "@mui/material";
 
-import { ExpandLess, ExpandMore } from "@mui/icons-material";
+import { ExpandLess, ExpandMore} from "@mui/icons-material";
 
 import AnalyticsIcon from "@mui/icons-material/Analytics";
+import SportsScoreIcon from '@mui/icons-material/SportsScore';
+import FilterSection from "../home_components/FilterSection";
+
+
 
 const RacesSection = () => {
-  const { races, setRaces, selectedSeason, setSelectedSeason } =
-    useContext(AppContext);
+  const { races, setRaces, selectedSeason, setSelectedSeason } = useContext(AppContext);
 
   const [open, setOpen] = useState(true);
   const [openItems, setOpenItems] = useState([]); // State to track which items are open
 
-  // const handleClick = (e) => {
-  //   // console.log(e);
+  console.log(selectedSeason)
 
-  //   // const sel = races.find((c) => c.raceId == id);
-  //   setOpen(!open);
-  // };
+  const handleResultsButton = (currRace) => {
+    // console.log(e);
+
+    // const sel = races.find((c) => c.raceId == id);
+    //return setSelectedSeason(false)
+  
+  };
+
+  const handleYearButton = () => {
+    return setSelectedSeason(false)
+  } 
 
   const handleClick = (index) => {
     setOpenItems((prevState) => {
@@ -63,14 +73,17 @@ const RacesSection = () => {
         // this then the races state will have undefined
         <CircularProgress className="m-8" />
       ) : (
-        <Box className="text-slate-100 overflow-auto w-1/4 h-full">
+        <Box className="text-slate-100 overflow-auto w-1/4 h-1/2">
           <List
             sx={{ width: "100%", maxWidth: 360 }}
             component="nav"
             aria-labelledby="nested-list-subheader"
             subheader={
               <ListSubheader component="div" id="nested-list-subheader">
-                RACE LIST
+                <Button onClick={() => handleYearButton()}>
+                    {selectedSeason + ' Races'}
+                    {/*race.year */}
+                </Button>
               </ListSubheader>
             }
           >
@@ -80,12 +93,16 @@ const RacesSection = () => {
                   <ListItemText primary={race.name} />
                 </ListItemButton>
                 <Collapse in={openItems[index]} timeout="auto" unmountOnExit>
-                  <List component="div" disablePadding>
+                  <List component="div">
                     <Button onClick={() => handleButtonClick1(race)}>
-                      Button 1
-                    </Button>
-                    <Button onClick={() => handleButtonClick2(race)}>
-                      Button 2
+                      <h1 className="pl-4 pr-4">Results</h1>
+                      <AnalyticsIcon sx={{fontSize:40}}/>
+                    </Button> 
+                  </List>
+                  <List component="div">
+                    <Button onClick={() => handleStandingsButton(race)}>
+                    <h1 className="pl-4 pr-4">Standings</h1>
+                      <SportsScoreIcon sx={{fontSize:40}}/>
                     </Button>
                   </List>
                 </Collapse>
