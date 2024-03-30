@@ -10,6 +10,9 @@ export const ContextProvider = ({ children }) => {
   const [selectedSeason, setSelectedSeason] = useState();
   const [races, setRaces] = useState();
   const [favorites, setFavorites] = useState();
+  const [selectedRace, setSelectedRace] = useState([]);
+  const [resultsSelected, setResultsSelected] = useState(false);
+  const [standingsSelected, setStandingsSelected] = useState(false);
 
   return (
     <AppContext.Provider
@@ -24,6 +27,12 @@ export const ContextProvider = ({ children }) => {
         setRaces,
         favorites,
         setFavorites,
+        selectedRace,
+        setSelectedRace,
+        resultsSelected,
+        standingsSelected,
+        setResultsSelected,
+        setStandingsSelected,
       }}
     >
       {children}

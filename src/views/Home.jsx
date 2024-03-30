@@ -2,17 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../Context";
 import FilterSection from "../home_components/FilterSection";
 import RacesSection from "../home_components/RacesSection";
+import HomeView from "../home_components/HomeView";
 
 const Home = () => {
-  const { selectedSeason, setSelectedSeason } = useContext(AppContext);
+  const { selectedSeason } = useContext(AppContext);
 
-  return (
-    <div>
-      {selectedSeason ? <RacesSection /> : <FilterSection />}
-    </div>
-    
-    
-    )
+  return <div>{selectedSeason ? <HomeView /> : <FilterSection />}</div>;
 };
 
 export default Home;

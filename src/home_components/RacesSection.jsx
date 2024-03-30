@@ -13,33 +13,45 @@ import {
   Button,
 } from "@mui/material";
 
-import { ExpandLess, ExpandMore} from "@mui/icons-material";
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
 
 import AnalyticsIcon from "@mui/icons-material/Analytics";
-import SportsScoreIcon from '@mui/icons-material/SportsScore';
+import SportsScoreIcon from "@mui/icons-material/SportsScore";
 import FilterSection from "../home_components/FilterSection";
-
-
+import { styled } from "@mui/material/styles";
 
 const RacesSection = () => {
-  const { races, setRaces, selectedSeason, setSelectedSeason } = useContext(AppContext);
+  const {
+    races,
+    setRaces,
+    selectedSeason,
+    setSelectedSeason,
+    resultsSelected,
+    setResultsSelected,
+    standingsSelected,
+    setStandingsSelected,
+    selectedRace,
+    setSelectedRace,
+  } = useContext(AppContext);
 
   const [open, setOpen] = useState(true);
   const [openItems, setOpenItems] = useState([]); // State to track which items are open
 
-  console.log(selectedSeason)
-
   const handleResultsButton = (currRace) => {
     // console.log(e);
-
     // const sel = races.find((c) => c.raceId == id);
-    //return setSelectedSeason(false)
-  
+    setSelectedRace(currRace);
+    setStandingsSelected(false);
+    setResultsSelected(true);
   };
 
   const handleYearButton = () => {
-    return setSelectedSeason(false)
-  } 
+    setSelectedSeason(false);
+  };
+  const handleStandingsButton = () => {
+    setResultsSelected(false);
+    setStandingsSelected(true);
+  };
 
   const handleClick = (index) => {
     setOpenItems((prevState) => {
@@ -65,44 +77,83 @@ const RacesSection = () => {
     fetchRacesData();
   }, []);
 
+  const RacesButton = styled(Button)({
+    boxShadow: "none",
+    textTransform: "none",
+    fontSize: 16,
+    // padding: "6px 12px",
+    lineHeight: 1.5,
+    // backgroundColor: "#0063cc",
+    borderColor: "#0063cc",
+    "&:hover": {
+      backgroundColor: "#0069d9",
+      borderColor: "#0062cc",
+      boxShadow: "none",
+    },
+    // "&:active": {
+    //   boxShadow: "none",
+    //   backgroundColor: "#0062cc",
+    //   borderColor: "#005cbf",
+    // },
+    // "&:focus": {
+    //   boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
+    // },
+  });
+
   return (
-    <div className="h-screen w-screen bg-zinc-900">
+    <div className="flex h-5/6 overflow-auto bg-zinc-900 rounded-lg ml-6">
       {!races ? (
         // The reason we do this is because we are still waiting for the data to
         // loaded , so we put a loading animation while we wait, if we don't do
         // this then the races state will have undefined
         <CircularProgress className="m-8" />
       ) : (
-        <Box className="text-slate-100 overflow-auto w-1/4 h-1/2">
+        <Box
+          sx={{
+            "&::-webkit-scrollbar": {
+              display: "none",
+              // Hide the scrollbar
+            },
+          }}
+          className="text-slate-100 overflow-auto"
+        >
           <List
-            sx={{ width: "100%", maxWidth: 360 }}
+            sx={{
+              width: "100%",
+              maxWidth: 360,
+              "&::-webkit-scrollbar": {
+                display: "none", // Hide the scrollbar
+              },
+            }}
             component="nav"
             aria-labelledby="nested-list-subheader"
             subheader={
-              <ListSubheader component="div" id="nested-list-subheader">
-                <Button onClick={() => handleYearButton()}>
-                    {selectedSeason + ' Races'}
-                    {/*race.year */}
-                </Button>
+              <ListSubheader id="nested-list-subheader">
+                <RacesButton variant="text" onClick={() => handleYearButton()}>
+                  <p className="text-3xl font-bold">
+                    {selectedSeason + " Races"}
+                  </p>
+                  {/*race.year */}
+                </RacesButton>
               </ListSubheader>
             }
           >
             {races.map((race, index) => (
-              <div key={race.id}>
+              <div key={race.raceId}>
                 <ListItemButton onClick={() => handleClick(index)}>
                   <ListItemText primary={race.name} />
                 </ListItemButton>
                 <Collapse in={openItems[index]} timeout="auto" unmountOnExit>
                   <List component="div">
-                    <Button onClick={() => handleButtonClick1(race)}>
+                    <Button onClick={() => handleResultsButton(race)}>
                       <h1 className="pl-4 pr-4">Results</h1>
-                      <AnalyticsIcon sx={{fontSize:40}}/>
-                    </Button> 
+                      <AnalyticsIcon sx={{ fontSize: 40 }} />
+                    </Button>
                   </List>
                   <List component="div">
                     <Button onClick={() => handleStandingsButton(race)}>
-                    <h1 className="pl-4 pr-4">Standings</h1>
-                      <SportsScoreIcon sx={{fontSize:40}}/>
+                      <h1 className="pl-4 pr-4">Standings</h1>
+                      <SportsScoreIcon sx={{ fontSize: 40 }} />
                     </Button>
                   </List>
                 </Collapse>
