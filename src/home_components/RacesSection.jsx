@@ -30,22 +30,17 @@ const RacesSection = () => {
     setStandingsSelected,
     selectedRace,
     setSelectedRace,
-    topDrivers, 
-    setTopDrivers
+    topDrivers,
+    setTopDrivers,
   } = useContext(AppContext);
-
-  const [open, setOpen] = useState(true);
-  const [openItems, setOpenItems] = useState([]); // State to track which items are open
 
   const handleResultsButton = (currRace) => {
     setSelectedRace(currRace);
-    console.log(selectedRace)
     setStandingsSelected(false);
     setResultsSelected(true);
-    fetchResultData()
+    fetchResultData(currRace.raceId);
   };
-  console.log(selectedRace)
-  
+
   const handleYearButton = () => {
     setSelectedSeason(false);
   };
@@ -54,26 +49,24 @@ const RacesSection = () => {
     setStandingsSelected(true);
   };
 
-  const fetchResultData = async () => {
+  const fetchResultData = async (raceId) => {
     try {
       const response = await fetch(
-        `https://w2024-assign1.glitch.me/api/results/${selectedRace.raceId}`
+        `https://w2024-assign1.glitch.me/api/results/${raceId}`
       );
       let racesData = await response.json();
-      const topThreeDrivers = filterResultData(racesData)
-      setTopDrivers(topThreeDrivers)
-      
+      const topThreeDrivers = filterResultData(racesData);
+      setTopDrivers(topThreeDrivers);
     } catch (err) {
       console.log(err);
     }
   };
 
   const filterResultData = (resultData) => {
-    console.log(resultData)
-    resultData = resultData.filter(data => data.positionOrder <= 3)
+    console.log(resultData);
+    resultData = resultData.filter((data) => data.positionOrder <= 3);
     return resultData;
   };
- 
 
   useEffect(() => {
     const fetchRacesData = async () => {
@@ -95,9 +88,7 @@ const RacesSection = () => {
     boxShadow: "none",
     textTransform: "none",
     fontSize: 16,
-    // padding: "6px 12px",
     lineHeight: 1.5,
-    // backgroundColor: "#0063cc",
     borderColor: "#0063cc",
     "&:hover": {
       backgroundColor: "#0069d9",
@@ -125,7 +116,7 @@ const RacesSection = () => {
               width: "100%",
               maxWidth: 360,
               "&::-webkit-scrollbar": {
-                display: "none", // Hide the scrollbar
+                display: "none",
               },
             }}
             component="nav"
@@ -142,7 +133,13 @@ const RacesSection = () => {
             }
           >
             {races.map((race, index) => (
-              <RaceItem key={index} index ={index} race={race} resultClick ={handleResultsButton} standingClick = {handleStandingsButton}/>
+              <RaceItem
+                key={index}
+                index={index}
+                race={race}
+                resultClick={handleResultsButton}
+                standingClick={handleStandingsButton}
+              />
             ))}
           </List>
         </Box>

@@ -8,7 +8,7 @@ import TopThreeDrivers from "./results_components/TopThreeDrivers";
 
 const ResultsSection = () => {
   return (
-    <Box sx={{ width: '100%', height: '100%'}}>
+    <Box sx={{ width: "100%", height: "100%" }}>
       <div className="w-auto h-1/5 bg-zinc-900 rounded-lg m-6">
         <TopThreeDrivers />
       </div>
