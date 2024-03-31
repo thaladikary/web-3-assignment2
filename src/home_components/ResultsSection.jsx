@@ -8,14 +8,14 @@ import TopThreeDrivers from "./results_components/TopThreeDrivers";
 
 const ResultsSection = () => {
   return (
-    <Box>
-      <div className="w-5/6 h-1/3 bg-zinc-900 rounded-lg m-6">
+    <Box sx={{ width: '100%', height: '100%'}}>
+      <div className="w-auto h-1/5 bg-zinc-900 rounded-lg m-6">
         <TopThreeDrivers />
       </div>
-      <div className="w-5/6 h-1/3 bg-zinc-900 rounded-lg m-6">
+      <div className="w-auto h-1/3 bg-zinc-900 rounded-lg m-6">
         <ResultsTable />
       </div>
-      <div className="w-5/6 h-1/3 bg-zinc-900 rounded-lg m-6">
+      <div className="w-auto h-1/3 bg-zinc-900 rounded-lg m-6">
         <QualifyingTable />
       </div>
     </Box>

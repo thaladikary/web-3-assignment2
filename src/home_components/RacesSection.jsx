@@ -13,10 +13,8 @@ import {
   Button,
 } from "@mui/material";
 
-import { ExpandLess, ExpandMore } from "@mui/icons-material";
+import RaceItem from "./RaceItem";
 
-import AnalyticsIcon from "@mui/icons-material/Analytics";
-import SportsScoreIcon from "@mui/icons-material/SportsScore";
 import FilterSection from "../home_components/FilterSection";
 import { styled } from "@mui/material/styles";
 
@@ -32,19 +30,22 @@ const RacesSection = () => {
     setStandingsSelected,
     selectedRace,
     setSelectedRace,
+    topDrivers, 
+    setTopDrivers
   } = useContext(AppContext);
 
   const [open, setOpen] = useState(true);
   const [openItems, setOpenItems] = useState([]); // State to track which items are open
 
   const handleResultsButton = (currRace) => {
-    // console.log(e);
-    // const sel = races.find((c) => c.raceId == id);
     setSelectedRace(currRace);
+    console.log(selectedRace)
     setStandingsSelected(false);
     setResultsSelected(true);
+    fetchResultData()
   };
-
+  console.log(selectedRace)
+  
   const handleYearButton = () => {
     setSelectedSeason(false);
   };
@@ -53,13 +54,26 @@ const RacesSection = () => {
     setStandingsSelected(true);
   };
 
-  const handleClick = (index) => {
-    setOpenItems((prevState) => {
-      const newState = [...prevState]; // Create a copy of the openItems array
-      newState[index] = !newState[index]; // Toggle the state of the clicked item
-      return newState;
-    });
+  const fetchResultData = async () => {
+    try {
+      const response = await fetch(
+        `https://w2024-assign1.glitch.me/api/results/${selectedRace.raceId}`
+      );
+      let racesData = await response.json();
+      const topThreeDrivers = filterResultData(racesData)
+      setTopDrivers(topThreeDrivers)
+      
+    } catch (err) {
+      console.log(err);
+    }
   };
+
+  const filterResultData = (resultData) => {
+    console.log(resultData)
+    resultData = resultData.filter(data => data.positionOrder <= 3)
+    return resultData;
+  };
+ 
 
   useEffect(() => {
     const fetchRacesData = async () => {
@@ -90,22 +104,11 @@ const RacesSection = () => {
       borderColor: "#0062cc",
       boxShadow: "none",
     },
-    // "&:active": {
-    //   boxShadow: "none",
-    //   backgroundColor: "#0062cc",
-    //   borderColor: "#005cbf",
-    // },
-    // "&:focus": {
-    //   boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
-    // },
   });
 
   return (
     <div className="flex h-5/6 overflow-auto bg-zinc-900 rounded-lg ml-6">
       {!races ? (
-        // The reason we do this is because we are still waiting for the data to
-        // loaded , so we put a loading animation while we wait, if we don't do
-        // this then the races state will have undefined
         <CircularProgress className="m-8" />
       ) : (
         <Box
@@ -139,25 +142,7 @@ const RacesSection = () => {
             }
           >
             {races.map((race, index) => (
-              <div key={race.raceId}>
-                <ListItemButton onClick={() => handleClick(index)}>
-                  <ListItemText primary={race.name} />
-                </ListItemButton>
-                <Collapse in={openItems[index]} timeout="auto" unmountOnExit>
-                  <List component="div">
-                    <Button onClick={() => handleResultsButton(race)}>
-                      <h1 className="pl-4 pr-4">Results</h1>
-                      <AnalyticsIcon sx={{ fontSize: 40 }} />
-                    </Button>
-                  </List>
-                  <List component="div">
-                    <Button onClick={() => handleStandingsButton(race)}>
-                      <h1 className="pl-4 pr-4">Standings</h1>
-                      <SportsScoreIcon sx={{ fontSize: 40 }} />
-                    </Button>
-                  </List>
-                </Collapse>
-              </div>
+              <RaceItem key={index} index ={index} race={race} resultClick ={handleResultsButton} standingClick = {handleStandingsButton}/>
             ))}
           </List>
         </Box>
