@@ -3,69 +3,20 @@ import { AppContext } from "../Context";
 import {
   ListSubheader,
   List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Collapse,
   CircularProgress,
-  ListItem,
   Box,
   Button,
 } from "@mui/material";
 
-import RaceItem from "./RaceItem";
-
-import FilterSection from "../home_components/FilterSection";
+import RaceItem from "./racesection_components/RaceItem";
 import { styled } from "@mui/material/styles";
 
 const RacesSection = () => {
-  const {
-    races,
-    setRaces,
-    selectedSeason,
-    setSelectedSeason,
-    resultsSelected,
-    setResultsSelected,
-    standingsSelected,
-    setStandingsSelected,
-    selectedRace,
-    setSelectedRace,
-    topDrivers,
-    setTopDrivers,
-  } = useContext(AppContext);
-
-  const handleResultsButton = (currRace) => {
-    setSelectedRace(currRace);
-    setStandingsSelected(false);
-    setResultsSelected(true);
-    fetchResultData(currRace.raceId);
-  };
+  const { races, setRaces, selectedSeason, setSelectedSeason } =
+    useContext(AppContext);
 
   const handleYearButton = () => {
     setSelectedSeason(false);
-  };
-  const handleStandingsButton = () => {
-    setResultsSelected(false);
-    setStandingsSelected(true);
-  };
-
-  const fetchResultData = async (raceId) => {
-    try {
-      const response = await fetch(
-        `https://w2024-assign1.glitch.me/api/results/${raceId}`
-      );
-      let racesData = await response.json();
-      const topThreeDrivers = filterResultData(racesData);
-      setTopDrivers(topThreeDrivers);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const filterResultData = (resultData) => {
-    console.log(resultData);
-    resultData = resultData.filter((data) => data.positionOrder <= 3);
-    return resultData;
   };
 
   useEffect(() => {
@@ -133,13 +84,7 @@ const RacesSection = () => {
             }
           >
             {races.map((race, index) => (
-              <RaceItem
-                key={index}
-                index={index}
-                race={race}
-                resultClick={handleResultsButton}
-                standingClick={handleStandingsButton}
-              />
+              <RaceItem key={index} index={index} race={race} />
             ))}
           </List>
         </Box>
