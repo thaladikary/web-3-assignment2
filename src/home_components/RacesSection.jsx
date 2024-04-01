@@ -32,6 +32,8 @@ const RacesSection = () => {
     setSelectedRace,
     topDrivers,
     setTopDrivers,
+    qualifyingData,
+    setQualifying
   } = useContext(AppContext);
 
   const handleResultsButton = (currRace) => {
@@ -39,6 +41,7 @@ const RacesSection = () => {
     setStandingsSelected(false);
     setResultsSelected(true);
     fetchResultData(currRace.raceId);
+    fetchQualifyingtData(currRace.raceId); 
   };
 
   const handleYearButton = () => {
@@ -57,6 +60,20 @@ const RacesSection = () => {
       let racesData = await response.json();
       const topThreeDrivers = filterResultData(racesData);
       setTopDrivers(topThreeDrivers);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  
+  const fetchQualifyingtData = async (raceId) => {
+    try {
+      const response = await fetch(
+        `https://w2024-assign1.glitch.me/api/qualifying/${raceId}`
+      );
+
+      let qualifyingTable = await response.json();
+      
+      setQualifying(qualifyingTable);
     } catch (err) {
       console.log(err);
     }
