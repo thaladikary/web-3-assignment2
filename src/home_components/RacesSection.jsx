@@ -3,22 +3,16 @@ import { AppContext } from "../Context";
 import {
   ListSubheader,
   List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Collapse,
   CircularProgress,
-  ListItem,
   Box,
   Button,
 } from "@mui/material";
 
-import RaceItem from "./RaceItem";
-
-import FilterSection from "../home_components/FilterSection";
+import RaceItem from "./racesection_components/RaceItem";
 import { styled } from "@mui/material/styles";
 
 const RacesSection = () => {
+<<<<<<< HEAD
   const {
     races,
     setRaces,
@@ -43,10 +37,15 @@ const RacesSection = () => {
     fetchResultData(currRace.raceId);
     fetchQualifyingtData(currRace.raceId); 
   };
+=======
+  const { races, setRaces, selectedSeason, setSelectedSeason } =
+    useContext(AppContext);
+>>>>>>> 4638c5f9e3f236eafdf685170bd9628da0ff23e0
 
   const handleYearButton = () => {
     setSelectedSeason(false);
   };
+<<<<<<< HEAD
   const handleStandingsButton = () => {
     setResultsSelected(false);
     setStandingsSelected(true);
@@ -84,6 +83,8 @@ const RacesSection = () => {
     resultData = resultData.filter((data) => data.positionOrder <= 3);
     return resultData;
   };
+=======
+>>>>>>> 4638c5f9e3f236eafdf685170bd9628da0ff23e0
 
   useEffect(() => {
     const fetchRacesData = async () => {
@@ -150,13 +151,7 @@ const RacesSection = () => {
             }
           >
             {races.map((race, index) => (
-              <RaceItem
-                key={index}
-                index={index}
-                race={race}
-                resultClick={handleResultsButton}
-                standingClick={handleStandingsButton}
-              />
+              <RaceItem key={index} index={index} race={race} />
             ))}
           </List>
         </Box>
