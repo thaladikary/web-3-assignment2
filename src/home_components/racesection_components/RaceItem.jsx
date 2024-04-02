@@ -21,7 +21,7 @@ const RaceItem = ({ race, index }) => {
       <div className="hover:bg-slate-600 hover:rounded-md">
         {" "}
         <ListItemButton onClick={() => handleClick(index)}>
-          <ListItemText primary={race.name} />
+          <ListItemText primary={[race.round, ". ", race.name]} />
         </ListItemButton>
       </div>
 

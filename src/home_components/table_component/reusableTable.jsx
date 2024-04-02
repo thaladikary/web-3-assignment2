@@ -1,9 +1,10 @@
 import React from "react";
+import ReactCountryFlag from "react-country-flag";
 
 const Table = ({ data }) => {
   return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full table-auto border-collapse">
+    <div className="h-content w-max">
+      <table className="table-auto border-collapse h-content">
         <thead className="bg-slate-800">
           <tr className="text-slate-100 border-slate-400">
             {Object.keys(data[0]).map((key, index) => (
@@ -13,7 +14,7 @@ const Table = ({ data }) => {
             ))}
           </tr>
         </thead>
-        <tbody className="text-slate-100">
+        <tbody className="text-slate-200">
           {data.map((row, rowIndex) => (
             <tr
               key={rowIndex}

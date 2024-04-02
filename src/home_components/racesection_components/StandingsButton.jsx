@@ -2,17 +2,90 @@ import { useState, useEffect, useContext } from "react";
 import { AppContext } from "../../Context";
 import SportsScoreIcon from "@mui/icons-material/SportsScore";
 import { Button } from "@mui/material";
+import ReactCountryFlag from "react-country-flag";
 
 const StandingsButton = ({ race }) => {
   const {
     setResultsSelected,
 
     setStandingsSelected,
+    driverStandings,
+    setDriverStandings,
+    setSelectedRace,
+    setConstructorStandings,
   } = useContext(AppContext);
 
-  const handleStandingsButton = () => {
+  const handleStandingsButton = (currRace) => {
     setResultsSelected(false);
     setStandingsSelected(true);
+    setSelectedRace(currRace);
+    fetchDriverData(currRace.raceId);
+    fetchConstructorData(currRace.raceId);
+  };
+
+  const fetchDriverData = async (raceId) => {
+    try {
+      const response = await fetch(
+        `https://w2024-assign1.glitch.me/api/standings/${raceId}/drivers`
+      );
+
+      let driverStandingsData = await response.json();
+
+      const driverStandingsTable =
+        filterDriverStandingData(driverStandingsData);
+      // console.log(driverStandingsTable);
+      setDriverStandings(driverStandingsTable);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const fetchConstructorData = async (raceId) => {
+    try {
+      const response = await fetch(
+        `https://w2024-assign1.glitch.me/api/standings/${raceId}/constructors`
+      );
+
+      let constructorStandingsData = await response.json();
+
+      const constructorStandingsTable = filterConstructorStandingData(
+        constructorStandingsData
+      );
+      // console.log(driverStandingsTable);
+      setConstructorStandings(constructorStandingsTable);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const filterConstructorStandingData = (constructorStandingsData) => {
+    const filteredData = constructorStandingsData.map((item) => {
+      const { position, constructors, points, wins } = item;
+      const filteredItem = {
+        position,
+        constructor: `${constructors.name}`,
+        points,
+        wins,
+      };
+      return filteredItem;
+    });
+
+    return filteredData;
+  };
+
+  const filterDriverStandingData = (driverStandingsData) => {
+    const filteredData = driverStandingsData.map((item) => {
+      const { position, drivers, points, wins, nationality } = item;
+      const filteredItem = {
+        position,
+        driver: `${drivers.forename} ${drivers.surname}`,
+        points,
+        wins,
+      };
+      return filteredItem;
+    });
+
+    return filteredData;
   };
 
   return (

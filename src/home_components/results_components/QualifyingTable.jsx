@@ -15,7 +15,7 @@ const QualifyingTable = () => {
   console.log(qualifyingData);
 
   return (
-    <div>
+    <div className="">
       {!qualifyingData ? (
         <CircularProgress className="m-8" />
       ) : (

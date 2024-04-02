@@ -4,12 +4,16 @@ import ConstructorsTable from "./standings_components/ConstructorsTable";
 
 const StandingsSection = () => {
   return (
-    <div>
-      <div className="w-5/6 h-1/3 bg-zinc-900 rounded-lg m-6">
+    <div className="flex flex  space-x-4">
+      <div className="">
+        <h1 className="text-slate-200">Driver Standings</h1>
         <DriversTable />
       </div>
-      <div className="w-5/6 h-1/3 bg-zinc-900 rounded-lg m-6">
-        <ConstructorsTable />
+      <div className="">
+        <div className="">
+          <h1 className="text-slate-200">Constructor Standings</h1>
+          <ConstructorsTable />
+        </div>
       </div>
     </div>
   );
