@@ -9,7 +9,6 @@ import {
 } from "@mui/material";
 
 import RaceItem from "./racesection_components/RaceItem";
-import { styled } from "@mui/material/styles";
 
 const RacesSection = () => {
   const { races, setRaces, selectedSeason, setSelectedSeason } =
@@ -73,6 +72,7 @@ const RacesSection = () => {
           {races.map((race, index) => (
             <RaceItem key={index} index={index} race={race} />
           ))}
+
           {/* </List> */}
         </Box>
       )}
