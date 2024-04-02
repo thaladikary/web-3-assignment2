@@ -24,19 +24,15 @@ const ResultsButton = ({ race }) => {
       const sortedResultData = sortResultData(racesData);
       const filteredResults = filterResultFields(sortedResultData);
       setResultsData(filteredResults);
-
     } catch (err) {
       console.log(err);
     }
   };
-  
-
 
   const sortResultData = (resultData) => {
     resultData = resultData.sort((a, b) => a.positionOrder - b.positionOrder);
     return resultData;
   };
-
 
   const fetchQualifyingtData = async (raceId) => {
     try {
@@ -51,7 +47,6 @@ const ResultsButton = ({ race }) => {
       console.log(err);
     }
   };
-
 
   const handleResultsButton = (currRace) => {
     setSelectedRace(currRace);
@@ -68,7 +63,7 @@ const ResultsButton = ({ race }) => {
   };
 
   const filterQualifyingtData = (qualifyingData) => {
-    const filteredData = qualifyingData.map(item => {
+    const filteredData = qualifyingData.map((item) => {
       const { position, q1, q2, q3, drivers, constructors } = item;
       const filteredItem = {
         position,
@@ -76,39 +71,42 @@ const ResultsButton = ({ race }) => {
         q2,
         q3,
         driver: drivers.surname,
-        constructor: constructors.name 
+        constructor: constructors.name,
       };
       return filteredItem;
     });
 
-    return filteredData
-
-  }
-
+    return filteredData;
+  };
 
   const filterResultFields = (resultData) => {
-    const filteredData = resultData.map(item => {
-      const { position,drivers,constructors,laps,points} = item;
+    const filteredData = resultData.map((item) => {
+      const { position, drivers, constructors, laps, points } = item;
       const filteredItem = {
         position,
         driver: `${drivers.forename} ${drivers.surname}`,
-        constructor: constructors.name, 
+        constructor: constructors.name,
         laps,
         points,
-
       };
       return filteredItem;
     });
 
-    return filteredData
-
-  }
-
-
+    return filteredData;
+  };
 
   return (
-    <Button onClick={() => handleResultsButton(race)}>
-      <h1 className="pl-4 pr-4">Results</h1>
+    <Button
+      sx={{
+        color: "white",
+        "&:hover": {
+          backgroundColor: "rgba(0, 0, 0, 0.1)",
+          width: "100%",
+        },
+      }}
+      onClick={() => handleResultsButton(race)}
+    >
+      <h1 className="pl-4 pr-4 text-slate-400">Results</h1>
       <AnalyticsIcon sx={{ fontSize: 40 }} />
     </Button>
   );

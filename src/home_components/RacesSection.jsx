@@ -15,10 +15,6 @@ const RacesSection = () => {
   const { races, setRaces, selectedSeason, setSelectedSeason } =
     useContext(AppContext);
 
-  const handleYearButton = () => {
-    setSelectedSeason(false);
-  };
-
   useEffect(() => {
     const fetchRacesData = async () => {
       try {
@@ -35,62 +31,49 @@ const RacesSection = () => {
     fetchRacesData();
   }, []);
 
-
-
-
-  
-  const RacesButton = styled(Button)({
-    boxShadow: "none",
-    textTransform: "none",
-    fontSize: 16,
-    lineHeight: 1.5,
-    borderColor: "#0063cc",
-    "&:hover": {
-      backgroundColor: "#0069d9",
-      borderColor: "#0062cc",
-      boxShadow: "none",
-    },
-  });
-
   return (
-    <div className="flex h-5/6 overflow-auto bg-zinc-900 rounded-lg ml-6">
+    <div className="sticky top-0 flex bg-slate-800 rounded-md text-slate-50 w-content">
       {!races ? (
-        <CircularProgress className="m-8" />
+        // <CircularProgress className="m-8" />
+        <div></div>
       ) : (
         <Box
-          sx={{
-            "&::-webkit-scrollbar": {
-              display: "none",
-              // Hide the scrollbar
-            },
-          }}
-          className="text-slate-100 overflow-auto"
+          className="sticky top-0"
+          // sx={{
+          //   "&::-webkit-scrollbar": {
+          //     display: "none",
+          //     // Hide the scrollbar
+          //   },
+          // }}
         >
-          <List
+          {/* <List
             sx={{
               width: "100%",
-              maxWidth: 360,
-              "&::-webkit-scrollbar": {
-                display: "none",
-              },
+              // "&::-webkit-scrollbar": {
+              //   display: "none",
+              // },
             }}
             component="nav"
             aria-labelledby="nested-list-subheader"
             subheader={
               <ListSubheader id="nested-list-subheader">
-                <RacesButton variant="text" onClick={() => handleYearButton()}>
-                  <p className="text-3xl font-bold">
-                    {selectedSeason + " Races"}
-                  </p>
-                  {/*race.year */}
-                </RacesButton>
+                <button
+                  className="text-xl bg-sky-500 hover:bg-sky-700 text-slate-50 p-2 rounded-md w-full"
+                  onClick={() => handleYearButton()}
+                >
+                  {selectedSeason + " Races"}
+                </button>
               </ListSubheader>
             }
-          >
-            {races.map((race, index) => (
-              <RaceItem key={index} index={index} race={race} />
-            ))}
-          </List>
+          > */}
+          {/* <h1 className="text-center text-sky-200 text-3xl m-2">
+            List of races
+          </h1> */}
+
+          {races.map((race, index) => (
+            <RaceItem key={index} index={index} race={race} />
+          ))}
+          {/* </List> */}
         </Box>
       )}
     </div>

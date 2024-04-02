@@ -16,8 +16,17 @@ const StandingsButton = ({ race }) => {
   };
 
   return (
-    <Button onClick={() => handleStandingsButton(race)}>
-      <h1 className="pl-4 pr-4">Standings</h1>
+    <Button
+      sx={{
+        color: "white",
+        "&:hover": {
+          backgroundColor: "rgba(0, 0, 0, 0.1)",
+          width: "100%",
+        },
+      }}
+      onClick={() => handleStandingsButton(race)}
+    >
+      <h1 className="pl-4 pr-4 text-slate-400">Standings</h1>
       <SportsScoreIcon sx={{ fontSize: 40 }} />
     </Button>
   );

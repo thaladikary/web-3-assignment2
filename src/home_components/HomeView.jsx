@@ -11,21 +11,64 @@ const HomeView = () => {
     selectedView,
     setSelectedView,
     resultsSelected,
+    setSelectedSeason,
     setResultSelected,
     standingsSelected,
     setStandingsSelected,
+    selectedSeason,
+    selectedRace,
+    setResultsData,
+    setStandingsData,
+    setTopDrivers,
+    setQualifying,
   } = useContext(AppContext);
 
+  const handleYearButton = () => {
+    setSelectedSeason(false);
+    // setResultsData();
+    // setStandingsData();
+    // setTopDrivers();
+    // setQualifying();
+  };
+
   return (
-    <div className="flex flex-row items-center w-screen bg-gradient-to-b from-black to-gray-900 h-screen overflow-hidden">
-      <RacesSection />
-      {!resultsSelected && !standingsSelected ? (
-        <p>Empty</p>
-      ) : resultsSelected ? (
-        <ResultsSection />
+    <div className="bg-gradient-to-b from-gray-800 to-black h-full p-10">
+      {resultsSelected ? (
+        <h1 className="text-start text-3xl text-slate-200">
+          <button
+            className="font-bold hover:underline rounded-md p-1"
+            onClick={() => handleYearButton()}
+          >
+            {selectedSeason}
+          </button>{" "}
+          Race Results {`| ${selectedRace.name}`}
+        </h1>
       ) : (
-        <StandingsSection />
+        <h1 className="text-start text-3xl text-slate-200">
+          <button
+            className="font-bold hover:underline rounded-md p-1"
+            onClick={() => handleYearButton()}
+          >
+            {selectedSeason}
+          </button>{" "}
+          Season Standings {`| ${selectedRace.name}`}
+        </h1>
       )}
+      <div className="flex flex-row mt-10 space-x-4">
+        <div className="h-1/2 w-content overflow-y">
+          <RacesSection />
+        </div>
+
+        {!resultsSelected && !standingsSelected ? (
+          <div className="w-full h-full text-slate-400">
+            Select a race to view the results or standings
+          </div>
+        ) : resultsSelected ? (
+          <ResultsSection />
+        ) : (
+          <StandingsSection />
+        )}
+      </div>
     </div>
   );
 };

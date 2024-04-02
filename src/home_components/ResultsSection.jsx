@@ -8,14 +8,14 @@ import TopThreeDrivers from "./results_components/TopThreeDrivers";
 
 const ResultsSection = () => {
   return (
-    <Box sx={{ width: "100%", height: "100%" }}>
-      <div className="w-auto h-1/5 bg-zinc-900 rounded-lg m-6">
+    <Box className="w-full h-screen space-y-6">
+      <div className="w-auto h-content bg-zinc-900 rounded-md  overflow-auto">
         <TopThreeDrivers />
       </div>
-      <div className="w-auto h-1/3 bg-zinc-900 rounded-lg m-6">
+      <div className="w-auto h-1/3 bg-zinc-900 rounded-md  overflow-auto">
         <ResultsTable />
       </div>
-      <div className="w-auto h-1/3 bg-zinc-900 rounded-lg m-6">
+      <div className="w-auto h-1/3 bg-zinc-900 rounded-md  overflow-auto">
         <QualifyingTable />
       </div>
     </Box>

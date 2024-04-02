@@ -11,7 +11,14 @@ import {
 import CircularProgress from "@mui/material/CircularProgress";
 
 const FilterSection = () => {
-  const { seasons, setSeasons, selectedSeason, setSelectedSeason } = useContext(AppContext);
+  const {
+    seasons,
+    setSeasons,
+    selectedSeason,
+    setSelectedSeason,
+    setSelectedRace,
+    setResultsData,
+  } = useContext(AppContext);
 
   useEffect(() => {
     const fetchSeasonsData = async () => {
@@ -29,7 +36,9 @@ const FilterSection = () => {
 
     fetchSeasonsData();
   }, []);
-  
+
+  const updateSelectedData = (year) => {};
+
   const filterSeasonData = (seasonData) => {
     seasonData = seasonData.filter((data) => data.year >= 2000);
     seasonData = seasonData.sort((a, b) => b.year - a.year);

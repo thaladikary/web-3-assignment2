@@ -17,20 +17,26 @@ const RaceItem = ({ race, index }) => {
   };
 
   return (
-    <div>
-      <ListItemButton onClick={() => handleClick(index)}>
-        <ListItemText primary={race.name} />
-      </ListItemButton>
+    <div className="">
+      <div className="hover:bg-slate-600 hover:rounded-md">
+        {" "}
+        <ListItemButton onClick={() => handleClick(index)}>
+          <ListItemText primary={race.name} />
+        </ListItemButton>
+      </div>
 
-      <Collapse in={openItems[index]} timeout="auto" unmountOnExit>
-        <List component="div">
-          <ResultsButton race={race} />
-        </List>
+      <div className="">
+        {" "}
+        <Collapse in={openItems[index]} timeout="auto" unmountOnExit>
+          <List component="div">
+            <ResultsButton race={race} />
+          </List>
 
-        <List component="div">
-          <StandingsButton race={race} />
-        </List>
-      </Collapse>
+          <List component="div">
+            <StandingsButton race={race} />
+          </List>
+        </Collapse>
+      </div>
     </div>
   );
 };
