@@ -14,7 +14,10 @@ export const ContextProvider = ({ children }) => {
   const [resultsSelected, setResultsSelected] = useState(false);
   const [standingsSelected, setStandingsSelected] = useState(false);
   const [topDrivers, setTopDrivers] = useState();
+  const [qualifyingData,setQualifying] = useState(); 
+  const [resultsData, setResultsData] = useState();
 
+  
   return (
     <AppContext.Provider
       value={{
@@ -35,7 +38,11 @@ export const ContextProvider = ({ children }) => {
         setResultsSelected,
         setStandingsSelected,
         topDrivers,
-        setTopDrivers
+        setTopDrivers,
+        qualifyingData,
+        setQualifying,
+        resultsData,
+        setResultsData,
       }}
     >
       {children}
