@@ -9,13 +9,13 @@ import TopThreeDrivers from "./results_components/TopThreeDrivers";
 const ResultsSection = () => {
   return (
     <Box className="w-full h-screen space-y-6">
-      <div className="w-auto h-content bg-zinc-900 rounded-md  overflow-auto">
+      <div className="flex justify-evenly w-auto h-content bg-zinc-900 rounded-md">
         <TopThreeDrivers />
       </div>
-      <div className="w-auto h-1/3 bg-zinc-900 rounded-md  overflow-auto">
+      <div className="w-fullw-auto h-1/3 bg-zinc-900 rounded-md  overflow-auto">
         <ResultsTable />
       </div>
-      <div className="w-auto h-1/3 bg-zinc-900 rounded-md  overflow-auto">
+      <div className="w-full w-auto h-1/3 bg-zinc-900 rounded-md  overflow-auto">
         <QualifyingTable />
       </div>
     </Box>

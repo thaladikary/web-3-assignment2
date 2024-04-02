@@ -31,8 +31,8 @@ const TopThreeDrivers = () => {
       {!topDrivers ? (
         <CircularProgress className="m-8" />
       ) : (
-        <div className="flex w-full">
-          <div className={"flex-1 justify-end mx-auto gap-4 pl-40"}>
+        <div className="flex justify-evenly">
+          <div className={"mx-auto gap-4 pl-40"}>
             <img
               src="https://placehold.co/100x100"
               alt="Your alt text"
@@ -44,7 +44,7 @@ const TopThreeDrivers = () => {
             <p className={"text-center text-4xl"}>2</p>
           </div>
 
-          <div className={"flex-1 gap-6"}>
+          <div className={" gap-6"}>
             <img
               src="https://placehold.co/100x100"
               alt="Your alt text"
@@ -56,7 +56,7 @@ const TopThreeDrivers = () => {
             <p className={"text-center text-6xl"}>1</p>
           </div>
 
-          <div className={"flex-1 gap-2 pr-40"}>
+          <div className={"gap-2 pr-40"}>
             <img
               src="https://placehold.co/100x100"
               alt="Your alt text"
