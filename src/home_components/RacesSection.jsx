@@ -12,79 +12,12 @@ import RaceItem from "./racesection_components/RaceItem";
 import { styled } from "@mui/material/styles";
 
 const RacesSection = () => {
-<<<<<<< HEAD
-  const {
-    races,
-    setRaces,
-    selectedSeason,
-    setSelectedSeason,
-    resultsSelected,
-    setResultsSelected,
-    standingsSelected,
-    setStandingsSelected,
-    selectedRace,
-    setSelectedRace,
-    topDrivers,
-    setTopDrivers,
-    qualifyingData,
-    setQualifying
-  } = useContext(AppContext);
-
-  const handleResultsButton = (currRace) => {
-    setSelectedRace(currRace);
-    setStandingsSelected(false);
-    setResultsSelected(true);
-    fetchResultData(currRace.raceId);
-    fetchQualifyingtData(currRace.raceId); 
-  };
-=======
   const { races, setRaces, selectedSeason, setSelectedSeason } =
     useContext(AppContext);
->>>>>>> 4638c5f9e3f236eafdf685170bd9628da0ff23e0
 
   const handleYearButton = () => {
     setSelectedSeason(false);
   };
-<<<<<<< HEAD
-  const handleStandingsButton = () => {
-    setResultsSelected(false);
-    setStandingsSelected(true);
-  };
-
-  const fetchResultData = async (raceId) => {
-    try {
-      const response = await fetch(
-        `https://w2024-assign1.glitch.me/api/results/${raceId}`
-      );
-      let racesData = await response.json();
-      const topThreeDrivers = filterResultData(racesData);
-      setTopDrivers(topThreeDrivers);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  
-  const fetchQualifyingtData = async (raceId) => {
-    try {
-      const response = await fetch(
-        `https://w2024-assign1.glitch.me/api/qualifying/${raceId}`
-      );
-
-      let qualifyingTable = await response.json();
-      
-      setQualifying(qualifyingTable);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const filterResultData = (resultData) => {
-    console.log(resultData);
-    resultData = resultData.filter((data) => data.positionOrder <= 3);
-    return resultData;
-  };
-=======
->>>>>>> 4638c5f9e3f236eafdf685170bd9628da0ff23e0
 
   useEffect(() => {
     const fetchRacesData = async () => {
@@ -102,6 +35,10 @@ const RacesSection = () => {
     fetchRacesData();
   }, []);
 
+
+
+
+  
   const RacesButton = styled(Button)({
     boxShadow: "none",
     textTransform: "none",
