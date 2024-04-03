@@ -38,7 +38,7 @@ const TopThreeDrivers = () => {
               alt="Your alt text"
               className="h-12 w-12 rounded-full mx-auto"
             />
-            <p className="text-xs font-black text-center bg-opacity-80  bg-gray-800 rounded-full px-2">
+            <p className="text-xs text-white text-center bg-opacity-80  bg-gray-800 rounded-full px-2">
               {topDrivers[1].drivers.forename}
             </p>
             <p className={"text-center text-4xl"}>2</p>
@@ -50,7 +50,7 @@ const TopThreeDrivers = () => {
               alt="Your alt text"
               className="h-20 w-20 rounded-full mx-auto"
             />
-            <p className="text-xs font-white text-center bg-opacity-80  bg-gray-800 rounded-full px-2">
+            <p className="text-xs text-white text-center bg-opacity-80  bg-gray-800 rounded-full px-2">
               {topDrivers[0].drivers.forename}
             </p>
             <p className={"text-center text-6xl"}>1</p>
@@ -62,7 +62,7 @@ const TopThreeDrivers = () => {
               alt="Your alt text"
               className="h-12 w-12 rounded-full mx-auto"
             />
-            <p className="text-xs font-black text-center bg-opacity-80  bg-gray-800 rounded-full px-2">
+            <p className="text-xs text-white text-center bg-opacity-80  bg-gray-800 rounded-full px-2">
               {topDrivers[2].drivers.forename}
             </p>
             <p className={"text-center text-3xl"}>3</p>

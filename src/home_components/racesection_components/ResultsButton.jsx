@@ -20,7 +20,8 @@ const ResultsButton = ({ race }) => {
       );
       let racesData = await response.json();
       const topThreeDrivers = filterResultData(racesData);
-      setTopDrivers(topThreeDrivers);
+      const sortTopThreeDrivers = sortResultData(topThreeDrivers);
+      setTopDrivers(sortTopThreeDrivers);
       const sortedResultData = sortResultData(racesData);
       const filteredResults = filterResultFields(sortedResultData);
       setResultsData(filteredResults);
@@ -64,14 +65,14 @@ const ResultsButton = ({ race }) => {
 
   const filterQualifyingtData = (qualifyingData) => {
     const filteredData = qualifyingData.map((item) => {
-      const { position, q1, q2, q3, drivers, constructors } = item;
+      const { position,drivers, constructors,q1, q2, q3} = item;
       const filteredItem = {
         position,
+        driver: `${drivers.forename} ${drivers.surname}`,
+        constructor: constructors.name,
         q1,
         q2,
         q3,
-        driver: drivers.surname,
-        constructor: constructors.name,
       };
       return filteredItem;
     });
@@ -81,13 +82,14 @@ const ResultsButton = ({ race }) => {
 
   const filterResultFields = (resultData) => {
     const filteredData = resultData.map((item) => {
-      const { position, drivers, constructors, laps, points } = item;
+      const { position, drivers, constructors, laps, points,driverRef } = item;
       const filteredItem = {
         position,
         driver: `${drivers.forename} ${drivers.surname}`,
         constructor: constructors.name,
         laps,
         points,
+        driverRef : `${drivers.driverRef}`
       };
       return filteredItem;
     });

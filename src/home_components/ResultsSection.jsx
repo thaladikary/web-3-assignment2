@@ -13,12 +13,12 @@ const ResultsSection = () => {
         <TopThreeDrivers />
       </div>
       <div className="flex w-full justify-center  space-x-4">
-        <div className="rounded-md">
+        <div className="text-slate-100 rounded-md">
           <h1>Results Table</h1>
           <ResultsTable />
         </div>
         <div className="w-full rounded-md">
-          <h1>Results Table</h1>
+          <h1 className="text-slate-100 rounded-md">Qualifying Table</h1>
           <QualifyingTable />
         </div>
       </div>

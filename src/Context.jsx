@@ -18,6 +18,7 @@ export const ContextProvider = ({ children }) => {
   const [resultsData, setResultsData] = useState();
   const [driverStandings, setDriverStandings] = useState();
   const [constructorStandings, setConstructorStandings] = useState();
+  const [driverData, setDriverData] = useState();
 
   return (
     <AppContext.Provider
@@ -48,6 +49,8 @@ export const ContextProvider = ({ children }) => {
         setDriverStandings,
         constructorStandings,
         setConstructorStandings,
+        driverData, 
+        setDriverData
       }}
     >
       {children}
