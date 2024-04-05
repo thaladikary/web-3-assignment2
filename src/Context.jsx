@@ -19,6 +19,8 @@ export const ContextProvider = ({ children }) => {
   const [driverStandings, setDriverStandings] = useState();
   const [constructorStandings, setConstructorStandings] = useState();
   const [driverData, setDriverData] = useState();
+  const [ circuit,setCircuit] = useState();
+  const [ modalOpen,setOpenModal] = useState(false);
 
   return (
     <AppContext.Provider
@@ -50,7 +52,11 @@ export const ContextProvider = ({ children }) => {
         constructorStandings,
         setConstructorStandings,
         driverData, 
-        setDriverData
+        setDriverData,
+        circuit,
+        setCircuit,
+        modalOpen,
+        setOpenModal
       }}
     >
       {children}

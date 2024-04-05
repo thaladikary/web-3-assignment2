@@ -6,10 +6,11 @@ import ReuseableTable from "../table_component/reusableTable";
 import { CircularProgress } from "@mui/material";
 
 const ResultsTable = () => {
-  const { selectedRace, setSelectedRace, resultsData, setResultsData,driverData, setDriverData } = useContext(AppContext);
+  const { selectedRace, setSelectedRace, resultsData, setResultsData,driverData, setDriverData,circuit,setCircuit,setOpenModal } = useContext(AppContext);
 
   const handleDriverClick = (driver) => {
     fetchDriverData(driver)
+    setOpenModal(true)
     console.log("Driver clicked:", driver);
   };
 
@@ -32,6 +33,8 @@ const ResultsTable = () => {
   }
 
   console.log(driverData)
+  console.log(circuit)
+
 
   return (
     <div>

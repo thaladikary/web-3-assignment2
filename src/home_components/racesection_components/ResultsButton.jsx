@@ -11,6 +11,7 @@ const ResultsButton = ({ race }) => {
     setQualifying,
     setSelectedRace,
     setResultsData,
+    setCircuit
   } = useContext(AppContext);
 
   const fetchResultData = async (raceId) => {
@@ -49,12 +50,28 @@ const ResultsButton = ({ race }) => {
     }
   };
 
+
+  const fetchCircuitData = async (circuitId) => {
+    try {
+      const response = await fetch(
+        `https://w2024-assign1.glitch.me/api/circuits/${circuitId}`
+      );
+
+      let circuit = await response.json();
+      setCircuit(circuit);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
   const handleResultsButton = (currRace) => {
     setSelectedRace(currRace);
     setStandingsSelected(false);
     setResultsSelected(true);
     fetchResultData(currRace.raceId);
     fetchQualifyingtData(currRace.raceId);
+    fetchCircuitData(currRace.circuitId)
   };
 
   const filterResultData = (resultData) => {
