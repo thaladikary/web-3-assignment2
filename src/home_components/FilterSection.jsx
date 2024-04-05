@@ -40,7 +40,9 @@ const FilterSection = () => {
   const updateSelectedData = (year) => {};
 
   const filterSeasonData = (seasonData) => {
-    seasonData = seasonData.filter((data) => data.year >= 2000);
+    seasonData = seasonData.filter(
+      (data) => data.year >= 2000 && data.year <= 2023
+    );
     seasonData = seasonData.sort((a, b) => b.year - a.year);
     return seasonData;
   };

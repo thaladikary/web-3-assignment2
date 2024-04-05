@@ -11,26 +11,39 @@ import DriverModal from "./modal_components/DriverModal";
 
 
 const ResultsSection = () => {
-  const {  modalOpen} = useContext(AppContext);
+  const { modalOpen } = useContext(AppContext);
   return (
-    <Box className="w-max space-y-6 flex flex-col">
-      <div className="flex justify-evenly w-full bg-zinc-900 rounded-md">
+    <div className="flex flex-col justify-center items-center w-full space-x-8 space-y-8">
+      {/* Top 3 drivers display Section */}
+      <div className="w-full flex justify-center border-2 ml-8">
         <TopThreeDrivers />
       </div>
-      <div className="flex w-full justify-center  space-x-4">
-        <div className="text-slate-100 rounded-md">
-          <h1>Results Table</h1>
+
+      {/* Results and Qualifying Tables Section */}
+      <div className="flex flex-row w-full border-2 justify-center space-x-4">
+        {/* Results Table Section */}
+        <div className="flex-2 text-slate-100 rounded-md overflow">
+          <h1 className="font-bold text-3xl m-2">Results Table</h1>
           <ResultsTable />
         </div>
-        <div className="w-full rounded-md">
-          <h1 className="text-slate-100 rounded-md">Qualifying Table</h1>
+
+        {/* Qualifying Table Section */}
+        <div className="flex-3 text-slate-100 rounded-md">
+          <h1 className="font-bold text-3xl m-2">Qualifying Table</h1>
           <QualifyingTable />
         </div>
         <div className="Modal">
             <DriverModal/> 
         </div>
       </div>
-    </Box>
+
+      {/* Modal Section */}
+      <div className="Modal">
+        <Modal open={modalOpen}>
+          <div className="text-white">Modal</div>
+        </Modal>
+      </div>
+    </div>
   );
 };
 

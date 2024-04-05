@@ -11,10 +11,11 @@ const ResultsButton = ({ race }) => {
     setQualifying,
     setSelectedRace,
     setResultsData,
-    setCircuit
+    setCircuit,
   } = useContext(AppContext);
 
   const fetchResultData = async (raceId) => {
+    console.log(raceId);
     try {
       const response = await fetch(
         `https://w2024-assign1.glitch.me/api/results/${raceId}`
@@ -50,7 +51,6 @@ const ResultsButton = ({ race }) => {
     }
   };
 
-
   const fetchCircuitData = async (circuitId) => {
     try {
       const response = await fetch(
@@ -58,12 +58,11 @@ const ResultsButton = ({ race }) => {
       );
 
       let circuit = await response.json();
-      setCircuit(circuit);
+      setCircuit(circuit[0]);
     } catch (err) {
       console.log(err);
     }
   };
-
 
   const handleResultsButton = (currRace) => {
     setSelectedRace(currRace);
@@ -71,7 +70,7 @@ const ResultsButton = ({ race }) => {
     setResultsSelected(true);
     fetchResultData(currRace.raceId);
     fetchQualifyingtData(currRace.raceId);
-    fetchCircuitData(currRace.circuitId)
+    fetchCircuitData(currRace.circuitId);
   };
 
   const filterResultData = (resultData) => {
@@ -82,7 +81,7 @@ const ResultsButton = ({ race }) => {
 
   const filterQualifyingtData = (qualifyingData) => {
     const filteredData = qualifyingData.map((item) => {
-      const { position,drivers, constructors,q1, q2, q3} = item;
+      const { position, drivers, constructors, q1, q2, q3 } = item;
       const filteredItem = {
         position,
         driver: `${drivers.forename} ${drivers.surname}`,
@@ -99,14 +98,14 @@ const ResultsButton = ({ race }) => {
 
   const filterResultFields = (resultData) => {
     const filteredData = resultData.map((item) => {
-      const { position, drivers, constructors, laps, points,driverRef } = item;
+      const { position, drivers, constructors, laps, points, driverRef } = item;
       const filteredItem = {
         position,
         driver: `${drivers.forename} ${drivers.surname}`,
         constructor: constructors.name,
         laps,
         points,
-        driverRef : `${drivers.driverRef}`
+        driverRef: `${drivers.driverRef}`,
       };
       return filteredItem;
     });
