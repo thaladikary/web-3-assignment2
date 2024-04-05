@@ -32,8 +32,8 @@ const HomeView = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-gray-800 to-black h-full">
-      <div className="flex flex-col justify-center content-center pt-16 items-center">
+    <div className="bg-zinc-900 p-28">
+      <div className="flex flex-col items-center">
         {resultsSelected ? (
           <h1 className="text-start text-3xl text-slate-200">
             <button
@@ -64,14 +64,14 @@ const HomeView = () => {
             </button>{" "}
           </h1>
         )}
-        <div className="flex flex-row mt-10 space-x-4">
-          <div className="h-1/2 w-content overflow-y">
+        <div className="flex flex-row space-x-4 h-max">
+          <div className="w-content">
             <RacesSection />
           </div>
 
           {!resultsSelected && !standingsSelected ? (
-            <div className="w-full h-full text-slate-400">
-              Select a race to view the results or standings
+            <div className="text-slate-400 text-4xl pr-48">
+              Please select a race or view its result and standings
             </div>
           ) : resultsSelected ? (
             <ResultsSection />

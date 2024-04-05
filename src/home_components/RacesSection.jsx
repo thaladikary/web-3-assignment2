@@ -31,7 +31,7 @@ const RacesSection = () => {
   }, []);
 
   return (
-    <div className="sticky top-0 flex bg-slate-800 rounded-md text-slate-50 w-content">
+    <div className="sticky top-0 flex bg-slate-800 rounded-md text-slate-50">
       {!races ? (
         // <CircularProgress className="m-8" />
         <div></div>
