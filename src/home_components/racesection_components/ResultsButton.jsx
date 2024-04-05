@@ -15,7 +15,6 @@ const ResultsButton = ({ race }) => {
   } = useContext(AppContext);
 
   const fetchResultData = async (raceId) => {
-    console.log(raceId);
     try {
       const response = await fetch(
         `https://w2024-assign1.glitch.me/api/results/${raceId}`
@@ -74,7 +73,6 @@ const ResultsButton = ({ race }) => {
   };
 
   const filterResultData = (resultData) => {
-    console.log(resultData);
     resultData = resultData.filter((data) => data.positionOrder <= 3);
     return resultData;
   };
@@ -106,6 +104,7 @@ const ResultsButton = ({ race }) => {
         laps,
         points,
         driverRef: `${drivers.driverRef}`,
+        constructorRef: constructors.constructorRef,
       };
       return filteredItem;
     });

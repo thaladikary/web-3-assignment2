@@ -22,9 +22,9 @@ const Table = ({ data, onDriverClick, onConstructorClick }) => {
     return (
       <span
         className="cursor-pointer hover:underline font-bold"
-        onClick={() => onClick(constructor)}
+        onClick={() => onClick(constructor.constructorRef)}
       >
-        {constructor}
+        {constructor.constructor}
       </span>
     );
   };
@@ -64,7 +64,7 @@ const Table = ({ data, onDriverClick, onConstructorClick }) => {
                       {key === "driver"
                         ? renderDriver(row, onDriverClick)
                         : key === "constructor"
-                        ? renderConstructor(value, onConstructorClick)
+                        ? renderConstructor(row, onConstructorClick)
                         : value}
                     </td>
                   );

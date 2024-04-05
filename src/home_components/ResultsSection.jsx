@@ -5,13 +5,12 @@ import QualifyingTable from "./results_components/QualifyingTable";
 import { Box } from "@mui/material";
 import ResultsTable from "./results_components/ResultsTable";
 import TopThreeDrivers from "./results_components/TopThreeDrivers";
-import Modal from '@mui/material/Modal';
+import Modal from "@mui/material/Modal";
 import DriverModal from "./modal_components/DriverModal";
-
-
 
 const ResultsSection = () => {
   const { modalOpen } = useContext(AppContext);
+
   return (
     <div className="flex flex-col justify-center items-center w-full space-x-8 space-y-8">
       {/* Top 3 drivers display Section */}
@@ -32,16 +31,6 @@ const ResultsSection = () => {
           <h1 className="font-bold text-3xl m-2">Qualifying Table</h1>
           <QualifyingTable />
         </div>
-        <div className="Modal">
-            <DriverModal/> 
-        </div>
-      </div>
-
-      {/* Modal Section */}
-      <div className="Modal">
-        <Modal open={modalOpen}>
-          <div className="text-white">Modal</div>
-        </Modal>
       </div>
     </div>
   );

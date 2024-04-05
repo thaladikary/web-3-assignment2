@@ -10,24 +10,28 @@ const QualifyingTable = () => {
   const { selectedRace, setSelectedRace, qualifyingData, setQualifying } =
     useContext(AppContext);
 
-    const handleDriverClick = (driver) => {
-      // Handle click on driver here
-      console.log("Driver clicked:", driver);
-    };
-  
-    const handleConstructorClick = (constructor) => {
-      // Handle click on constructor here
-      console.log("Constructor clicked:", constructor);
-    };
+  const handleDriverClick = (driver) => {
+    // Handle click on driver here
+    // console.log("Driver clicked:", driver);
+  };
 
-  console.log(qualifyingData);
+  const handleConstructorClick = (constructor) => {
+    // Handle click on constructor here
+    // console.log("Constructor clicked:", constructor);
+  };
+
+  // console.log(qualifyingData);
 
   return (
     <div className="">
       {!qualifyingData ? (
         <CircularProgress className="m-8" />
       ) : (
-        <ReuseableTable data={qualifyingData} onDriverClick={handleDriverClick} onConstructorClick={handleConstructorClick} />
+        <ReuseableTable
+          data={qualifyingData}
+          onDriverClick={handleDriverClick}
+          onConstructorClick={handleConstructorClick}
+        />
       )}
 
       {/* <ReuseableTable data={qualifyingData}/> */}
