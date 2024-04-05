@@ -30,14 +30,14 @@ const Table = ({ data, onDriverClick, onConstructorClick }) => {
   };
 
   return (
-    <div className="w-max">
-      <table className="table-auto border-collapse">
+    <div className="">
+      <table className="">
         <thead className="bg-slate-800">
           <tr className="text-slate-100 border-slate-400">
             {Object.keys(data[0]).map((key, index) => {
               if (key !== "driverRef" && key !== "constructorRef") {
                 return (
-                  <th key={index} className="px-4 py-2 text-left">
+                  <th key={index} className="px-8 py-4 text-left">
                     {key}
                   </th>
                 );

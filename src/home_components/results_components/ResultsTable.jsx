@@ -21,7 +21,6 @@ const ResultsTable = () => {
   const handleDriverClick = (driver) => {
     fetchDriverData(driver);
     setOpenModal(true);
-    console.log("Driver clicked:", driver);
   };
 
   const handleConstructorClick = (constructor) => {
@@ -41,9 +40,6 @@ const ResultsTable = () => {
       console.log(err);
     }
   };
-
-  console.log(driverData);
-  console.log(circuit);
 
   return (
     <div className="">

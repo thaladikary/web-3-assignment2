@@ -31,13 +31,13 @@ const RacesSection = () => {
   }, []);
 
   return (
-    <div className="sticky top-0 flex bg-slate-800 rounded-md text-slate-50">
+    <div className="sticky top-0 bg-slate-800 rounded-md text-slate-50 w-max h-max">
       {!races ? (
         // <CircularProgress className="m-8" />
         <div></div>
       ) : (
         <Box
-          className="sticky top-0"
+          className=""
           // sx={{
           //   "&::-webkit-scrollbar": {
           //     display: "none",

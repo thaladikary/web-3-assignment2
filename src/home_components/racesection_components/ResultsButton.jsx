@@ -58,7 +58,7 @@ const ResultsButton = ({ race }) => {
       );
 
       let circuit = await response.json();
-      setCircuit(circuit);
+      setCircuit(circuit[0]);
     } catch (err) {
       console.log(err);
     }
