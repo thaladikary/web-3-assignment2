@@ -6,22 +6,15 @@ import ReuseableTable from "../table_component/reusableTable";
 
 import { CircularProgress } from "@mui/material";
 
-const QualifyingTable = () => {
+const QualifyingTable = ({
+  handleDriverClick,
+  handleConstructorClick,
+  driverData,
+}) => {
   const { selectedRace, setSelectedRace, qualifyingData, setQualifying } =
     useContext(AppContext);
 
-  const handleDriverClick = (driver) => {
-    // Handle click on driver here
-    // console.log("Driver clicked:", driver);
-  };
-
-  const handleConstructorClick = (constructor) => {
-    // Handle click on constructor here
-    // console.log("Constructor clicked:", constructor);
-  };
-
-  // console.log(qualifyingData);
-
+  console.log(driverData);
   return (
     <div className="">
       {!qualifyingData ? (

@@ -29,11 +29,14 @@ const ConstructorModal = () => {
     boxShadow: 24,
     p: 4,
   };
-  console.log();
+  const handleModalClose = () => {
+    setConstructorModalOpen(false);
+  };
 
   return (
     <Modal
       open={constructorModal}
+      onClose={handleModalClose}
       style={{
         display: "flex",
         alignItems: "center",
@@ -44,7 +47,11 @@ const ConstructorModal = () => {
         {!currentConstructor ? (
           <CircularProgress className="m-8" />
         ) : (
-          <h1 className="text-black">{currentConstructor[0].name}</h1>
+          <div>
+            {" "}
+            <button onClick={handleModalClose}>CLOSE</button>
+            <h1 className="text-black">{currentConstructor[0].name}</h1>
+          </div>
         )}
       </Box>
     </Modal>

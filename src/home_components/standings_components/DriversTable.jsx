@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { CircularProgress } from "@mui/material";
 import ReuseableTable from "../table_component/reusableTable";
 
-const DriversTable = () => {
+const DriversTable = ({ handleDriverClick }) => {
   const { driverStandings } = useContext(AppContext);
 
   return (
@@ -13,7 +13,10 @@ const DriversTable = () => {
         {!driverStandings ? (
           <CircularProgress className="m-8" />
         ) : (
-          <ReuseableTable data={driverStandings} />
+          <ReuseableTable
+            onDriverClick={handleDriverClick}
+            data={driverStandings}
+          />
         )}
       </div>
     </div>

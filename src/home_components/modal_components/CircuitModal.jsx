@@ -14,6 +14,7 @@ const CircuitModal = () => {
     setConstructorModalOpen,
     circuitModal,
     setCircuitModalOpen,
+    circuit,
   } = useContext(AppContext);
 
   const style = {
@@ -28,11 +29,16 @@ const CircuitModal = () => {
     p: 4,
   };
 
+  const handleModalClose = () => {
+    setCircuitModalOpen(false);
+  };
+
   // console.log(driverData);
 
   return (
     <Modal
       open={circuitModal}
+      onClose={handleModalClose}
       style={{
         display: "flex",
         alignItems: "center",
@@ -40,10 +46,13 @@ const CircuitModal = () => {
       }}
     >
       <Box sx={style}>
-        {!driverData ? (
+        {!circuit ? (
           <CircularProgress className="m-8" />
         ) : (
-          <h1 className="text-black">{driverData[0].forename}</h1>
+          <div>
+            <button onClick={handleModalClose}>CLOSE</button>
+            <h1 className="text-black">{circuit.name}</h1>
+          </div>
         )}
       </Box>
     </Modal>

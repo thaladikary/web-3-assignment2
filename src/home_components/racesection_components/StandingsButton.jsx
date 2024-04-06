@@ -13,14 +13,31 @@ const StandingsButton = ({ race }) => {
     setDriverStandings,
     setSelectedRace,
     setConstructorStandings,
+    circuit,
+    setCircuit,
   } = useContext(AppContext);
 
   const handleStandingsButton = (currRace) => {
+    console.log(currRace);
+    setSelectedRace(currRace);
     setResultsSelected(false);
     setStandingsSelected(true);
-    setSelectedRace(currRace);
     fetchDriverData(currRace.raceId);
     fetchConstructorData(currRace.raceId);
+    fetchCircuitData(currRace.circuitId);
+  };
+
+  const fetchCircuitData = async (circuitId) => {
+    try {
+      const response = await fetch(
+        `https://w2024-assign1.glitch.me/api/circuits/${circuitId}`
+      );
+
+      let circuit = await response.json();
+      setCircuit(circuit[0]);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const fetchDriverData = async (raceId) => {
@@ -66,6 +83,7 @@ const StandingsButton = ({ race }) => {
         constructor: `${constructors.name}`,
         points,
         wins,
+        constructorRef: constructors.constructorRef,
       };
       return filteredItem;
     });
@@ -81,6 +99,7 @@ const StandingsButton = ({ race }) => {
         driver: `${drivers.forename} ${drivers.surname}`,
         points,
         wins,
+        driverRef: `${drivers.driverRef}`,
       };
       return filteredItem;
     });

@@ -27,7 +27,11 @@ const TopThreeDrivers = () => {
   };
 
   return (
-    <div className={"flex flex-row justify-center items-center h-96"}>
+    <div
+      className={
+        "flex flex-row w-full space-x-8 justify-center items-center border-2 border-slate-700 rounded-md h-96"
+      }
+    >
       {!topDrivers ? (
         <CircularProgress className="m-8" />
       ) : (

@@ -5,7 +5,7 @@ import { AppContext } from "../../Context";
 import ReuseableTable from "../table_component/reusableTable";
 import { CircularProgress } from "@mui/material";
 
-const ConstructorsTable = () => {
+const ConstructorsTable = ({ handleConstructorClick }) => {
   const { constructorStandings } = useContext(AppContext);
 
   return (
@@ -13,7 +13,10 @@ const ConstructorsTable = () => {
       {!constructorStandings ? (
         <CircularProgress className="m-8" />
       ) : (
-        <ReuseableTable data={constructorStandings} />
+        <ReuseableTable
+          onConstructorClick={handleConstructorClick}
+          data={constructorStandings}
+        />
       )}
     </div>
   );

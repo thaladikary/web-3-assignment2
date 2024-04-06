@@ -87,6 +87,8 @@ const ResultsButton = ({ race }) => {
         q1,
         q2,
         q3,
+        driverRef: `${drivers.driverRef}`,
+        constructorRef: constructors.constructorRef,
       };
       return filteredItem;
     });

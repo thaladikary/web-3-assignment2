@@ -32,7 +32,7 @@ const Table = ({ data, onDriverClick, onConstructorClick }) => {
   return (
     <div className="">
       <table className="">
-        <thead className="bg-slate-800">
+        <thead className="bg-slate-700">
           <tr className="text-slate-100 border-slate-400">
             {Object.keys(data[0]).map((key, index) => {
               if (key !== "driverRef" && key !== "constructorRef") {
@@ -53,8 +53,8 @@ const Table = ({ data, onDriverClick, onConstructorClick }) => {
               key={rowIndex}
               className={
                 rowIndex % 2 === 0
-                  ? "table-color  border-b border-slate-800"
-                  : "table-color  border-b border-slate-800"
+                  ? "table-color  border-b border-slate-400"
+                  : "table-color  border-b border-slate-400"
               }
             >
               {Object.entries(row).map(([key, value], colIndex) => {
