@@ -4,6 +4,7 @@ import Modal from "@mui/material/Modal";
 import { AppContext } from "../../Context";
 import { useContext } from "react";
 import { CircularProgress } from "@mui/material";
+import ReactCountryFlag from "react-country-flag"
 
 const DriverModal = () => {
   const {
@@ -28,8 +29,6 @@ const DriverModal = () => {
     p: 4,
   };
 
-  // console.log(driverData);
-
   return (
     <Modal
       open={driverModal}
@@ -43,7 +42,31 @@ const DriverModal = () => {
         {!driverData ? (
           <CircularProgress className="m-8" />
         ) : (
-          <h1 className="text-black">{driverData[0].forename}</h1>
+
+         
+          <div  className="pdiv">
+             
+
+            <div className="listing-standing">
+              <div className="number flex flex-nowrap text-2xl  text-black border-b border-solid border-gray-500 pb-8">{driverData[0].number}</div>
+            </div>
+
+            <div className="container border-b border-solid border-gray-500">
+              <div className="flex flex-row justify-between">
+                <div className="flex flex-col content-start">
+                  <span className=" text-black">{driverData[0].forename}</span>
+                  <span className=" text-black font-bold">{driverData[0].surname}</span>
+                </div>
+                <div className="col-xs-4 country-flag">
+                  <ReactCountryFlag countryCode={driverData[0].countrycode} svg style={{
+                                                                                      width: '2em',
+                                                                                      height: '2em',
+                                                                                  }}/>
+               
+                </div>
+              </div>
+            </div>
+          </div >
         )}
       </Box>
     </Modal>
