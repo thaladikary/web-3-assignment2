@@ -29,6 +29,8 @@ const DriverModal = () => {
     p: 4,
   };
 
+  console.log(driverData)
+
   const handleModalClose = () => {
     setDriverModalOpen(false);
   };
@@ -65,14 +67,14 @@ const DriverModal = () => {
             <div className="container border-b border-solid border-gray-500">
               <div className="flex flex-row justify-between">
                 <div className="flex flex-col content-start">
-                  <span className=" text-black">{driverData.forename}</span>
+                  <span className=" text-black">{driverData.drivers.forename}</span>
                   <span className=" text-black font-bold">
-                    {driverData.surname}
+                    {driverData.drivers.surname}
                   </span>
                 </div>
                 <div className="col-xs-4 country-flag">
                   <ReactCountryFlag
-                    countryCode={driverData.countrycode} //use afils database for this
+                    countryCode={driverData.drivers.countrycode} //use afils database for this
                     svg
                     style={{
                       width: "2em",

@@ -54,35 +54,44 @@ const HomeView = ({ supabase }) => {
   };
 
   const fetchConstructorData = async (constructorRef) => {
-    const { data, error } = await supabase
-      .from("constructors")
-      .select()
-      .eq("constructorRef", constructorRef);
 
-    setCurrentConstructor(data[0]);
+    const { data, error } = await supabase
+    .from("results")
+    .select(
+      `resultId, number, grid, 
+            position, positionText, positionOrder, points, laps, time, milliseconds, 
+            fastestLap, rank, fastestLapTime, fastestLapSpeed, statusId, 
+            drivers(driverRef, code, forename, surname,countrycode),
+            races(name, round, year, date),
+            constructors(name, constructorRef, nationality)`
+    )
+    .eq("raceId", selectedRace.raceId)
+    .order("grid", { ascending: true });
+
+  const currentConstructor = data.filter(d => d.constructors.constructorRef == constructorRef)
+
+    setCurrentConstructor(currentConstructor);
   };
 
   const fetchDriverData = async (driverRef) => {
-    // const {data, err} = await supabase
-    //         .from("races")
-    //         .select()
-    //         .eq("year", season)
-    // try {
-    //   const response = await fetch(
-    //     `https://w2024-assign1.glitch.me/api/drivers/${driverRef}`
-    //   );
-    //   let driverData = await response.json();
-    //   setDriverData(driverData);
-    // } catch (err) {
-    //   console.log(err);
-    // }
-
+    
     const { data, error } = await supabase
-      .from("drivers")
-      .select()
-      .ilike("driverRef", driverRef);
+      .from("results")
+      .select(
+        `resultId, number, grid, 
+              position, positionText, positionOrder, points, laps, time, milliseconds, 
+              fastestLap, rank, fastestLapTime, fastestLapSpeed, statusId, 
+              drivers(driverRef, code, forename, surname,countrycode),
+              races(name, round, year, date),
+              constructors(name, constructorRef, nationality)`
+      )
+      .eq("raceId", selectedRace.raceId)
+      .order("grid", { ascending: true });
 
-    setDriverData(data[0]);
+    const currentDriver = data.filter(d => d.drivers.driverRef == driverRef)
+      
+    
+    setDriverData(currentDriver[0]);
   };
 
   return (
