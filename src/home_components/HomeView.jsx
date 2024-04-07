@@ -8,7 +8,7 @@ import RaceInfoText from "./Header";
 import DriverModal from "./modal_components/DriverModal";
 import CircuitModal from "./modal_components/CircuitModal";
 import ConstructorModal from "./modal_components/ConstructorModal";
-const HomeView = () => {
+const HomeView = ({supabase}) => {
   //results by is empty
 
   const {
@@ -30,6 +30,7 @@ const HomeView = () => {
     circuitModal,
     setCircuitModalOpen,
     setCurrentConstructor,
+    driverInfo,
   } = useContext(AppContext);
 
   const handleDriverClick = (driver) => {
@@ -64,16 +65,23 @@ const HomeView = () => {
   };
 
   const fetchDriverData = async (driverRef) => {
-    try {
-      const response = await fetch(
-        `https://w2024-assign1.glitch.me/api/drivers/${driverRef}`
-      );
+    
+    // const {data, err} = await supabase
+    //         .from("races")
+    //         .select()
+    //         .eq("year", season)
+    
 
-      let driverData = await response.json();
-      setDriverData(driverData);
-    } catch (err) {
-      console.log(err);
-    }
+    // try {
+    //   const response = await fetch(
+    //     `https://w2024-assign1.glitch.me/api/drivers/${driverRef}`
+    //   );
+
+    //   let driverData = await response.json();
+    //   setDriverData(driverData);
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
 
   return (

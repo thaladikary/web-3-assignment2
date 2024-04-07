@@ -36,39 +36,7 @@ const RacesSection = () => {
         // <CircularProgress className="m-8" />
         <div></div>
       ) : (
-        <Box
-          className=""
-          // sx={{
-          //   "&::-webkit-scrollbar": {
-          //     display: "none",
-          //     // Hide the scrollbar
-          //   },
-          // }}
-        >
-          {/* <List
-            sx={{
-              width: "100%",
-              // "&::-webkit-scrollbar": {
-              //   display: "none",
-              // },
-            }}
-            component="nav"
-            aria-labelledby="nested-list-subheader"
-            subheader={
-              <ListSubheader id="nested-list-subheader">
-                <button
-                  className="text-xl bg-sky-500 hover:bg-sky-700 text-slate-50 p-2 rounded-md w-full"
-                  onClick={() => handleYearButton()}
-                >
-                  {selectedSeason + " Races"}
-                </button>
-              </ListSubheader>
-            }
-          > */}
-          {/* <h1 className="text-center text-sky-200 text-3xl m-2">
-            List of races
-          </h1> */}
-
+        <Box>
           {races.map((race, index) => (
             <RaceItem key={index} index={index} race={race} />
           ))}

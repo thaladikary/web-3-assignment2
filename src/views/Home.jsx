@@ -4,10 +4,10 @@ import FilterSection from "../home_components/FilterSection";
 import RacesSection from "../home_components/RacesSection";
 import HomeView from "../home_components/HomeView";
 
-const Home = () => {
+const Home = ({supabase}) => {
   const { selectedSeason } = useContext(AppContext);
 
-  return <div>{selectedSeason ? <HomeView /> : <FilterSection />}</div>;
+  return <div>{selectedSeason ? <HomeView supabase = {supabase} /> : <FilterSection />}</div>;
 };
 
 export default Home;

@@ -1,9 +1,24 @@
 import { useState } from "react";
+import { useContext } from "react";
+import { AppContext } from "../../Context";
 import { List, ListItemButton, ListItemText, Collapse } from "@mui/material";
 import ResultsButton from "./ResultsButton";
 import StandingsButton from "./StandingsButton";
 
 const RaceItem = ({ race, index }) => {
+ 
+  const {
+    setResultsSelected,
+    setTopDrivers,
+    setStandingsSelected,
+    setQualifying,
+    setSelectedRace,
+    setResultsData,
+    setCircuit,
+    setDriverInfo,
+  } = useContext(AppContext);
+
+
   const [openItems, setOpenItems] = useState([]);
 
   const handleClick = (index) => {
@@ -15,6 +30,7 @@ const RaceItem = ({ race, index }) => {
       return newState;
     });
   };
+
 
   return (
     <div className="">

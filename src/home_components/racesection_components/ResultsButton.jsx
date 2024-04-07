@@ -12,6 +12,7 @@ const ResultsButton = ({ race }) => {
     setSelectedRace,
     setResultsData,
     setCircuit,
+    setDriverInfo,
   } = useContext(AppContext);
 
   const fetchResultData = async (raceId) => {
@@ -20,6 +21,7 @@ const ResultsButton = ({ race }) => {
         `https://w2024-assign1.glitch.me/api/results/${raceId}`
       );
       let racesData = await response.json();
+      setDriverInfo(racesData)
       const topThreeDrivers = filterResultData(racesData);
       const sortTopThreeDrivers = sortResultData(topThreeDrivers);
       setTopDrivers(sortTopThreeDrivers);
