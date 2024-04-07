@@ -43,7 +43,6 @@ const HomeView = ({ supabase }) => {
   const handleConstructorClick = (constructor) => {
     // Handle click on constructor here
     // console.log("Constructor clicked:", constructor);
-    console.log(currentConstructor);
     fetchConstructorData(constructor);
     setConstructorModalOpen(true);
   };
@@ -54,27 +53,27 @@ const HomeView = ({ supabase }) => {
   };
 
   const fetchConstructorData = async (constructorRef) => {
-
     const { data, error } = await supabase
-    .from("results")
-    .select(
-      `resultId, number, grid, 
+      .from("results")
+      .select(
+        `resultId, number, grid, 
             position, positionText, positionOrder, points, laps, time, milliseconds, 
             fastestLap, rank, fastestLapTime, fastestLapSpeed, statusId, 
             drivers(driverRef, code, forename, surname,countrycode),
             races(name, round, year, date),
-            constructors(name, constructorRef, nationality)`
-    )
-    .eq("raceId", selectedRace.raceId)
-    .order("grid", { ascending: true });
+            constructors(name, constructorRef, nationality, countrycode, *)`
+      )
+      .eq("raceId", selectedRace.raceId)
+      .order("grid", { ascending: true });
 
-  const currentConstructor = data.filter(d => d.constructors.constructorRef == constructorRef)
+    const selectedConstructor = data.filter(
+      (d) => d.constructors.constructorRef == constructorRef
+    );
 
-    setCurrentConstructor(currentConstructor);
+    setCurrentConstructor(selectedConstructor);
   };
 
   const fetchDriverData = async (driverRef) => {
-    
     const { data, error } = await supabase
       .from("results")
       .select(
@@ -83,14 +82,13 @@ const HomeView = ({ supabase }) => {
               fastestLap, rank, fastestLapTime, fastestLapSpeed, statusId, 
               drivers(driverRef, code, forename, surname,countrycode),
               races(name, round, year, date),
-              constructors(name, constructorRef, nationality)`
+              constructors(name, constructorRef, nationality, countrycode)`
       )
       .eq("raceId", selectedRace.raceId)
       .order("grid", { ascending: true });
 
-    const currentDriver = data.filter(d => d.drivers.driverRef == driverRef)
-      
-    
+    const currentDriver = data.filter((d) => d.drivers.driverRef == driverRef);
+
     setDriverData(currentDriver[0]);
   };
 
