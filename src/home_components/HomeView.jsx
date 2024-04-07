@@ -8,6 +8,7 @@ import RaceInfoText from "./Header";
 import DriverModal from "./modal_components/DriverModal";
 import CircuitModal from "./modal_components/CircuitModal";
 import ConstructorModal from "./modal_components/ConstructorModal";
+import FavoritesModal from "./modal_components/FavoritesModal";
 const HomeView = ({ supabase }) => {
   //results by is empty
 
@@ -74,7 +75,6 @@ const HomeView = ({ supabase }) => {
   };
 
   const fetchDriverData = async (driverRef) => {
-
     const { data, error } = await supabase
       .from("results")
       .select(
@@ -92,9 +92,12 @@ const HomeView = ({ supabase }) => {
 
     setDriverData(currentDriver[0]);
   };
-
+  // bg-gradient-to-b from-gray-900 via-gray-800 to-blue-900
   return (
-    <div className="bg-gradient-to-b from-gray-900 via-gray-800 to-blue-900 h-full w-full p-32">
+    <div className="bg-gradient-to-br from-gray-900 to-black h-full w-full p-32">
+      <div className="Modal">
+        <FavoritesModal />
+      </div>
       <div className="Modal">
         <DriverModal />
       </div>

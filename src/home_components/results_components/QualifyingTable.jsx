@@ -14,7 +14,6 @@ const QualifyingTable = ({
   const { selectedRace, setSelectedRace, qualifyingData, setQualifying } =
     useContext(AppContext);
 
-  console.log(driverData);
   return (
     <div className="">
       {!qualifyingData ? (

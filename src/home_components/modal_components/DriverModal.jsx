@@ -1,14 +1,19 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
+import { useState, useEffect } from "react";
 import { AppContext } from "../../Context";
 import { useContext } from "react";
 import { CircularProgress } from "@mui/material";
 import ReactCountryFlag from "react-country-flag";
 import CloseIcon from "@mui/icons-material/Close";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import Snackbar from "@mui/material/Snackbar";
+import SnackbarContent from "@mui/material/SnackbarContent";
 
 const DriverModal = () => {
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+
   const {
     driverData,
     driverModal,
@@ -17,6 +22,8 @@ const DriverModal = () => {
     setConstructorModalOpen,
     circuitModal,
     setCircuitModalOpen,
+    setDriverFavList,
+    driverFavList,
   } = useContext(AppContext);
 
   const style = {
@@ -33,6 +40,13 @@ const DriverModal = () => {
 
   const handleModalClose = () => {
     setDriverModalOpen(false);
+  };
+
+  const addToFavorites = (addedDriver) => {
+    if (!driverFavList.includes(addedDriver)) {
+      setDriverFavList([...driverFavList, addedDriver]);
+    }
+    handleModalClose();
   };
 
   return (
@@ -52,7 +66,10 @@ const DriverModal = () => {
           <div className="pdiv text-slate-100">
             <div className="flex flex-row justify-end mb-4">
               <button className="text-slate-100 " onClick={handleModalClose}>
-                <CloseIcon className="hover:text-slate-500 " />
+                <CloseIcon
+                  style={{ fontSize: 32 }}
+                  className="hover:text-slate-500 "
+                />
               </button>
             </div>
             <div className="listing-standing flex flex-nowrap justify-between items-center pb-2">
@@ -80,7 +97,7 @@ const DriverModal = () => {
                 </div>
                 <div className="col-xs-4 country-flag">
                   <ReactCountryFlag
-                    countryCode={driverData.drivers.countrycode} //use afils database for this
+                    countryCode={driverData.drivers.countrycode}
                     svg
                     style={{
                       width: "2em",
@@ -102,9 +119,12 @@ const DriverModal = () => {
                 className="h-56 w-48 rounded-md mx-auto"
               />
             </div>
-            <div className="mt-6">
-              <FavoriteBorderIcon className="text-slate-100 hover:cursor" />
-            </div>
+            <button onClick={() => addToFavorites(driverData)} className="mt-6">
+              <FavoriteBorderIcon
+                style={{ fontSize: 32 }}
+                className="text-slate-100 hover:cursor hover:text-slate-500"
+              />
+            </button>
           </div>
         )}
       </Box>

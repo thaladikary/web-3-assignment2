@@ -25,6 +25,10 @@ export const ContextProvider = ({ children }) => {
   const [circuitModal, setCircuitModalOpen] = useState(false);
   const [currentConstructor, setCurrentConstructor] = useState();
   const [driverInfo, setDriverInfo] = useState();
+  const [favoritesModal, setFavoritesModalOpen] = useState(false);
+  const [driverFavList, setDriverFavList] = useState([]);
+  const [constructorFavList, setConstructorFavList] = useState();
+  const [circuitFavList, setCircuitFavList] = useState();
 
   return (
     <AppContext.Provider
@@ -67,8 +71,16 @@ export const ContextProvider = ({ children }) => {
         setCircuitModalOpen,
         currentConstructor,
         setCurrentConstructor,
-        driverInfo, 
-        setDriverInfo
+        driverInfo,
+        setDriverInfo,
+        favoritesModal,
+        setFavoritesModalOpen,
+        driverFavList,
+        setDriverFavList,
+        constructorFavList,
+        setConstructorFavList,
+        circuitFavList,
+        setCircuitFavList,
       }}
     >
       {children}

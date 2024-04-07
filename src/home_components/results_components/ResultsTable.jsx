@@ -24,7 +24,6 @@ const ResultsTable = ({ handleDriverClick, handleConstructorClick }) => {
     setCircuitModalOpen,
     setCurrentConstructor,
   } = useContext(AppContext);
-  console.log(driverData);
 
   return (
     <div className="">

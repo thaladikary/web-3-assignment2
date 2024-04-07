@@ -65,7 +65,10 @@ const ConstructorModal = () => {
                 />
               </h1>
               <button className="text-slate-100" onClick={handleModalClose}>
-                <CloseIcon className="hover:text-slate-500 " />
+                <CloseIcon
+                  style={{ fontSize: 32 }}
+                  className="text-slate-100 hover:cursor hover:text-slate-500"
+                />
               </button>
             </div>
             <div className="text-xl mt-6">
@@ -114,7 +117,10 @@ const ConstructorModal = () => {
                 />
               </div>
               <div className="mt-6">
-                <FavoriteBorderIcon className="text-slate-100 hover:cursor" />
+                <FavoriteBorderIcon
+                  style={{ fontSize: 32 }}
+                  className="text-slate-100 hover:cursor hover:text-slate-500"
+                />
               </div>
             </div>
 
