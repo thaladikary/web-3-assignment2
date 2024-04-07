@@ -8,7 +8,7 @@ import RaceInfoText from "./Header";
 import DriverModal from "./modal_components/DriverModal";
 import CircuitModal from "./modal_components/CircuitModal";
 import ConstructorModal from "./modal_components/ConstructorModal";
-const HomeView = ({supabase}) => {
+const HomeView = ({ supabase }) => {
   //results by is empty
 
   const {
@@ -31,10 +31,11 @@ const HomeView = ({supabase}) => {
     setCircuitModalOpen,
     setCurrentConstructor,
     driverInfo,
+    currentConstructor,
   } = useContext(AppContext);
 
   const handleDriverClick = (driver) => {
-    console.log(driver);
+    // console.log(driver);
     fetchDriverData(driver);
     setDriverModalOpen(true);
   };
@@ -42,6 +43,7 @@ const HomeView = ({supabase}) => {
   const handleConstructorClick = (constructor) => {
     // Handle click on constructor here
     // console.log("Constructor clicked:", constructor);
+    console.log(currentConstructor);
     fetchConstructorData(constructor);
     setConstructorModalOpen(true);
   };
@@ -52,36 +54,35 @@ const HomeView = ({supabase}) => {
   };
 
   const fetchConstructorData = async (constructorRef) => {
-    try {
-      const response = await fetch(
-        `https://w2024-assign1.glitch.me/api/constructors/${constructorRef}`
-      );
+    const { data, error } = await supabase
+      .from("constructors")
+      .select()
+      .eq("constructorRef", constructorRef);
 
-      let constructorData = await response.json();
-      setCurrentConstructor(constructorData);
-    } catch (err) {
-      console.log(err);
-    }
+    setCurrentConstructor(data[0]);
   };
 
   const fetchDriverData = async (driverRef) => {
-    
     // const {data, err} = await supabase
     //         .from("races")
     //         .select()
     //         .eq("year", season)
-    
-
     // try {
     //   const response = await fetch(
     //     `https://w2024-assign1.glitch.me/api/drivers/${driverRef}`
     //   );
-
     //   let driverData = await response.json();
     //   setDriverData(driverData);
     // } catch (err) {
     //   console.log(err);
     // }
+
+    const { data, error } = await supabase
+      .from("drivers")
+      .select()
+      .ilike("driverRef", driverRef);
+
+    setDriverData(data[0]);
   };
 
   return (

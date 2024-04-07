@@ -29,9 +29,6 @@ const DriverModal = () => {
     p: 4,
   };
 
-
-  console.log(driverData)
-
   const handleModalClose = () => {
     setDriverModalOpen(false);
   };
@@ -52,8 +49,15 @@ const DriverModal = () => {
         ) : (
           <div className="pdiv">
             <button onClick={handleModalClose}>CLOSE</button>
+            <div>
+              <img
+                src="https://placehold.co/100x100"
+                alt="Your alt text"
+                className="h-56 w-48 rounded-md mx-auto"
+              />
+            </div>
             <div className="listing-standing">
-              <div className="flex flex-nowrap text-2xl  text-black border-b border-solid border-gray-500 pb-8">
+              <div className="flex flex-nowrap text-2xl  text-black border-b border-solid border-gray-500 pb-2">
                 {driverData.number}
               </div>
             </div>
@@ -61,14 +65,14 @@ const DriverModal = () => {
             <div className="container border-b border-solid border-gray-500">
               <div className="flex flex-row justify-between">
                 <div className="flex flex-col content-start">
-                  <span className=" text-black">{driverData.drivers.forename}</span>
+                  <span className=" text-black">{driverData.forename}</span>
                   <span className=" text-black font-bold">
-                    {driverData.drivers.surname}
+                    {driverData.surname}
                   </span>
                 </div>
                 <div className="col-xs-4 country-flag">
                   <ReactCountryFlag
-                    countryCode={driverData.drivers.countrycode}
+                    countryCode={driverData.countrycode} //use afils database for this
                     svg
                     style={{
                       width: "2em",
