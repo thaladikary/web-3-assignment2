@@ -106,6 +106,13 @@ const ConstructorModal = () => {
                   </a>
                 </p>
               </div>
+              <div>
+                <img
+                  src="https://placehold.co/100x100"
+                  alt="Your alt text"
+                  className="h-56 w-48 rounded-md mx-auto"
+                />
+              </div>
               <div className="mt-6">
                 <FavoriteBorderIcon className="text-slate-100 hover:cursor" />
               </div>
