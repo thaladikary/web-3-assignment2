@@ -74,6 +74,7 @@ const HomeView = ({ supabase }) => {
   };
 
   const fetchDriverData = async (driverRef) => {
+
     const { data, error } = await supabase
       .from("results")
       .select(
@@ -82,7 +83,7 @@ const HomeView = ({ supabase }) => {
               fastestLap, rank, fastestLapTime, fastestLapSpeed, statusId, 
               drivers(driverRef, code, forename, surname,countrycode),
               races(name, round, year, date),
-              constructors(name, constructorRef, nationality, countrycode)`
+              constructors(name, constructorRef, nationality,countrycode)`
       )
       .eq("raceId", selectedRace.raceId)
       .order("grid", { ascending: true });
