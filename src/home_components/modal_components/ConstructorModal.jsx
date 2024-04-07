@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { AppContext } from "../../Context";
@@ -6,6 +6,8 @@ import { useContext } from "react";
 import { CircularProgress } from "@mui/material";
 import ReactCountryFlag from "react-country-flag";
 import { Link } from "@mui/icons-material";
+import CloseIcon from "@mui/icons-material/Close";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 const ConstructorModal = () => {
   const {
@@ -25,10 +27,10 @@ const ConstructorModal = () => {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
+    width: "max",
+    bgcolor: "#1A1C28",
     boxShadow: 24,
+    borderRadius: "6px",
     p: 4,
   };
   const handleModalClose = () => {
@@ -49,30 +51,67 @@ const ConstructorModal = () => {
         {!currentConstructor ? (
           <CircularProgress className="m-8" />
         ) : (
-          <div>
-            {" "}
-            <button onClick={handleModalClose}>CLOSE</button>
-            <div className="container border-b border-solid border-gray-500">
-              <div className="flex flex-row justify-between">
-                <div className="flex flex-col content-start">
-                  <span className=" text-black font-bold">
-                    <span className=" text-black">
-                      {currentConstructor.name}
-                    </span>
-                  </span>
-                </div>
-                <div className="col-xs-4 country-flag">
-                  <ReactCountryFlag
-                    countryCode={currentConstructor.nationality} //use afils database for this
-                    svg
-                    style={{
-                      width: "2em",
-                      height: "2em",
-                    }}
-                  />
-                </div>
+          <div className="container w-96">
+            <div className="border-b-2 flex justify-between">
+              <h1 className="text-3xl font-bold text-slate-100">
+                {currentConstructor[0].constructors.name}{" "}
+                <ReactCountryFlag
+                  countryCode={currentConstructor[0].constructors.countrycode}
+                  svg
+                  style={{
+                    width: "2em",
+                    height: "2em",
+                  }}
+                />
+              </h1>
+              <button className="text-slate-100" onClick={handleModalClose}>
+                <CloseIcon className="hover:text-slate-500 " />
+              </button>
+            </div>
+            <div className="text-xl mt-6">
+              <div className="mt-4">
+                <h1 className="text-slate-400">Drivers:</h1>
+                {currentConstructor.map((c) => {
+                  return (
+                    <div className="flex justify-between">
+                      <div className="flex text-slate-100">
+                        <p className="pr-1 ">{`${c.drivers.forename}`}</p>
+                        <p className="font-bold">{` ${c.drivers.surname}`}</p>
+                      </div>
+                      <div>
+                        <ReactCountryFlag
+                          countryCode={c.drivers.countrycode}
+                          svg
+                          style={{
+                            width: "2em",
+                            height: "2em",
+                          }}
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              <div>
+                <p className="text-slate-400 mt-4">Nationality:</p>
+                <p className="text-slate-100 ">
+                  {currentConstructor[0].constructors.nationality}
+                </p>
+              </div>
+              <div>
+                <p className="text-slate-400 mt-4">More info:</p>
+                <p className="text-slate-100 underline">
+                  <a href={currentConstructor[0].constructors.url}>
+                    Wikipedia link
+                  </a>
+                </p>
+              </div>
+              <div className="mt-6">
+                <FavoriteBorderIcon className="text-slate-100 hover:cursor" />
               </div>
             </div>
+
+            {/* close button */}
           </div>
         )}
       </Box>
