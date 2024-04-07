@@ -40,8 +40,6 @@ const RacesSection = () => {
           {races.map((race, index) => (
             <RaceItem key={index} index={index} race={race} />
           ))}
-
-          {/* </List> */}
         </Box>
       )}
     </div>

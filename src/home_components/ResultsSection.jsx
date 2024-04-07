@@ -2,7 +2,6 @@ import React from "react";
 import { AppContext } from "../Context";
 import { useContext } from "react";
 import QualifyingTable from "./results_components/QualifyingTable";
-import { Box } from "@mui/material";
 import ResultsTable from "./results_components/ResultsTable";
 import TopThreeDrivers from "./results_components/TopThreeDrivers";
 import Modal from "@mui/material/Modal";
