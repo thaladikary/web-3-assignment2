@@ -21,6 +21,8 @@ const StandingsButton = ({ race }) => {
     setSelectedRace(currRace);
     setResultsSelected(false);
     setStandingsSelected(true);
+    setConstructorStandings();
+    setDriverStandings();
     fetchDriverData(currRace.raceId);
     fetchConstructorData(currRace.raceId);
     fetchCircuitData(currRace.circuitId);

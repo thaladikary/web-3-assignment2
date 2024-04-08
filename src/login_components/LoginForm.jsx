@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 
 const LoginForm = () => {
-  const { loggedIn, setLoggedIn } = useContext(AppContext);
+  const { setLoggedIn } = useContext(AppContext);
 
   const handleLogin = () => {
     setLoggedIn(true);

@@ -69,8 +69,8 @@ const ResultsButton = ({ race }) => {
     setSelectedRace(currRace);
     setStandingsSelected(false);
     setResultsSelected(true);
-    // setQualifying();
-    // setResultsData();
+    setQualifying();
+    setQualifying();
     fetchResultData(currRace.raceId);
     fetchQualifyingtData(currRace.raceId);
     fetchCircuitData(currRace.circuitId);

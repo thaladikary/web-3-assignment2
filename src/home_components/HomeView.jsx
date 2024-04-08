@@ -101,7 +101,7 @@ const HomeView = ({ supabase }) => {
   //bg-gradient-to-br from-gray-900 to-black
   return (
     <div className="">
-      <div className="bg-gradient-to-br from-gray-900 to-black min-h-screen w-full p-32">
+      <div className="bg-gradient-to-br from-gray-900 to-black min-h-screen min-w-screen w-full p-32">
         <div className="Modal">
           <FavoritesModal />
         </div>
