@@ -21,6 +21,12 @@ const RaceInfoText = ({}) => {
     circuit,
     setCircuitModalOpen,
     setFavoritesModalOpen,
+    driverFavList,
+    setDriverFavList,
+    constructorFavList,
+    setConstructorFavList,
+    circuitFavList,
+    setCircuitFavList,
   } = useContext(AppContext);
 
   const handleYearButton = () => {
@@ -117,14 +123,26 @@ const RaceInfoText = ({}) => {
           </h1>
         )}
       </div>
-      <div className="flex flex-row space-x-4 justify-center items-center mr-4">
-        <button
-          className="h-full w-full bg-slate-100 p-4"
-          onClick={() => setFavoritesModalOpen(true)}
-        >
-          Favorites
-        </button>
-        <button className="h-full w-full bg-slate-100 p-4">About</button>
+      <div>
+        {driverFavList.length == 0 &&
+        circuitFavList.length == 0 &&
+        constructorFavList.length == 0 ? (
+          <div className="flex flex-row space-x-4 justify-center items-center mr-4">
+            {" "}
+            <button className="opacity-25 bg-slate-100 p-4">Favorites</button>
+            <button className="h-full w-full bg-slate-100 p-4">About</button>
+          </div>
+        ) : (
+          <div className="flex flex-row space-x-4 justify-center items-center mr-4">
+            <button
+              className="h-full w-full bg-slate-100 p-4"
+              onClick={() => setFavoritesModalOpen(true)}
+            >
+              Favorites
+            </button>
+            <button className="h-full w-full bg-slate-100 p-4">About</button>
+          </div>
+        )}
       </div>
     </div>
   );

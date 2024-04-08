@@ -22,19 +22,19 @@ const FilterSection = ({ supabase }) => {
 
   useEffect(() => {
     const fetchSeasonsData = async () => {
-      // try {
-      //   const response = await fetch(
-      //     `https://w2024-assign1.glitch.me/api/seasons`
-      //   );
-      //   let seasonData = await response.json();
-      //   seasonData = filterSeasonData(seasonData);
-      //   setSeasons(seasonData);
-      // } catch (err) {
-      //   console.log(err);
-      // }
-      const { data, error } = await supabase.from("seasons").select();
-      const seasonData = filterSeasonData(data);
-      setSeasons(seasonData);
+      try {
+        const response = await fetch(
+          `https://w2024-assign1.glitch.me/api/seasons`
+        );
+        let seasonData = await response.json();
+        seasonData = filterSeasonData(seasonData);
+        setSeasons(seasonData);
+      } catch (err) {
+        console.log(err);
+      }
+      // const { data, error } = await supabase.from("seasons").select();
+      // const seasonData = filterSeasonData(data);
+      // setSeasons(seasonData);
     };
 
     fetchSeasonsData();

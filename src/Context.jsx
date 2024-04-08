@@ -27,8 +27,8 @@ export const ContextProvider = ({ children }) => {
   const [driverInfo, setDriverInfo] = useState();
   const [favoritesModal, setFavoritesModalOpen] = useState(false);
   const [driverFavList, setDriverFavList] = useState([]);
-  const [constructorFavList, setConstructorFavList] = useState();
-  const [circuitFavList, setCircuitFavList] = useState();
+  const [constructorFavList, setConstructorFavList] = useState([]);
+  const [circuitFavList, setCircuitFavList] = useState([]);
 
   return (
     <AppContext.Provider

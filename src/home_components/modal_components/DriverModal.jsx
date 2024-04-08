@@ -43,7 +43,11 @@ const DriverModal = () => {
   };
 
   const addToFavorites = (addedDriver) => {
-    if (!driverFavList.includes(addedDriver)) {
+    if (
+      !driverFavList.find(
+        (d) => d.drivers.driverRef === addedDriver.drivers.driverRef
+      )
+    ) {
       setDriverFavList([...driverFavList, addedDriver]);
     }
     handleModalClose();
@@ -91,7 +95,7 @@ const DriverModal = () => {
                   <span className="text-xl text-slate-100">
                     {driverData.drivers.forename}
                   </span>
-                  <span className=" text-slate-100 font-bold">
+                  <span className=" text-slate-100 font-bold text-xl">
                     {driverData.drivers.surname}
                   </span>
                 </div>
@@ -100,8 +104,8 @@ const DriverModal = () => {
                     countryCode={driverData.drivers.countrycode}
                     svg
                     style={{
-                      width: "2em",
-                      height: "2em",
+                      width: "4em",
+                      height: "4em",
                     }}
                   />
                 </div>

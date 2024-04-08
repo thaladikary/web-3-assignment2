@@ -20,6 +20,8 @@ const ConstructorModal = () => {
     setCircuitModalOpen,
     currentConstructor,
     setCurrentConstructor,
+    setConstructorFavList,
+    constructorFavList,
   } = useContext(AppContext);
 
   const style = {
@@ -35,6 +37,20 @@ const ConstructorModal = () => {
   };
   const handleModalClose = () => {
     setConstructorModalOpen(false);
+  };
+
+  const addToFavorites = (addedConstructor) => {
+    console.log(addedConstructor);
+    if (
+      !constructorFavList.find(
+        (c) =>
+          c.constructors.constructorRef ===
+          addedConstructor.constructors.constructorRef
+      )
+    ) {
+      setConstructorFavList([...constructorFavList, addedConstructor]);
+    }
+    handleModalClose();
   };
 
   return (
@@ -117,10 +133,12 @@ const ConstructorModal = () => {
                 />
               </div>
               <div className="mt-6">
-                <FavoriteBorderIcon
-                  style={{ fontSize: 32 }}
-                  className="text-slate-100 hover:cursor hover:text-slate-500"
-                />
+                <button onClick={() => addToFavorites(currentConstructor[0])}>
+                  <FavoriteBorderIcon
+                    style={{ fontSize: 32 }}
+                    className="text-slate-100 hover:cursor hover:text-slate-500"
+                  />
+                </button>
               </div>
             </div>
 

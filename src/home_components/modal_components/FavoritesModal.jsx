@@ -36,7 +36,8 @@ const FavoritesModal = () => {
   };
 
   const clearFavorites = () => {
-    setDriverFavList();
+    setDriverFavList([]);
+    setConstructorFavList([]);
   };
 
   return (
@@ -53,39 +54,36 @@ const FavoritesModal = () => {
         {!driverFavList && !circuitFavList && !constructorFavList ? (
           <div className="text-slate-100">You have no favorites added!</div>
         ) : (
-          <div className="border-b-2 p-4">
-            <div className="flex flex-row justify-end space-x-4 mb-8">
-              <button
-                onClick={clearFavorites}
-                className="text-slate-100 hover:text-slate-500"
-              >
-                <DeleteOutlineIcon style={{ fontSize: 32 }} />
-              </button>
-              <button className="text-slate-100 " onClick={handleModalClose}>
-                <CloseIcon
-                  style={{ fontSize: 32 }}
-                  className="hover:text-slate-500 "
-                />
-              </button>
+          <div className="p-4">
+            <div className="flex block flex-row justify-between space-x-4 mb-8 border-b-2">
+              <div className="text-slate-100 font-bold text-3xl ">
+                Favorites List
+              </div>
+              <div className="">
+                <button
+                  onClick={clearFavorites}
+                  className="text-slate-100 hover:text-slate-500"
+                >
+                  <DeleteOutlineIcon style={{ fontSize: 32 }} />
+                </button>
+                <button className="text-slate-100 " onClick={handleModalClose}>
+                  <CloseIcon
+                    style={{ fontSize: 32 }}
+                    className="hover:text-slate-500 "
+                  />
+                </button>
+              </div>
             </div>
             <div className="container w-max display flex space-x-16 text-slate-100">
               {/* Favorites for Drivers */}
               <div className="">
-                <h2 className="text-xl font-bold mb-4 border-2 rounded-md p-2">
+                <h2 className="text-xl font-bold mb-4 rounded-m">
                   Favorite Drivers
                 </h2>
                 <ul>
                   {driverFavList.map((driver) => (
                     <li key={driver.drivers.driverRef} className="mb-2">
                       {driver.drivers.forename} {driver.drivers.surname}{" "}
-                      <ReactCountryFlag
-                        countryCode={driver.drivers.countrycode}
-                        svg
-                        style={{
-                          width: "2em",
-                          height: "2em",
-                        }}
-                      />
                     </li>
                   ))}
                 </ul>
@@ -95,9 +93,9 @@ const FavoritesModal = () => {
                   Favorite Constructors
                 </h2>
                 <ul>
-                  {driverFavList.map((driver) => (
-                    <li key={driver.drivers.driverRef} className="mb-2">
-                      {driver.drivers.forename} {driver.drivers.surname}
+                  {constructorFavList.map((c) => (
+                    <li key={c.constructors.driverRef} className="mb-2">
+                      {c.constructors.name}
                     </li>
                   ))}
                 </ul>
