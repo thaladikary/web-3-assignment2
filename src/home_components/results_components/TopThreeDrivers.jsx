@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect, useContext } from "react";
 import { AppContext } from "../../Context.jsx";
 import CircularProgress from "@mui/material/CircularProgress";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 
 const TopThreeDrivers = () => {
   const { selectedRace, setSelectedRace, topDrivers, setTopDrivers } =
@@ -29,47 +31,66 @@ const TopThreeDrivers = () => {
   return (
     <div
       className={
-        "flex flex-row w-full space-x-8 justify-center items-center border-2 border-slate-700 rounded-md h-96"
+        "flex flex-col w-full space-x-8 justify-center items-center border-2 border-slate-700 rounded-md h-96"
       }
     >
+      <h1 className="text-white pb-8">Top 3 Drivers</h1>
       {!topDrivers ? (
         <CircularProgress className="m-8" />
       ) : (
+        
         <div className="flex justify-evenly">
-          <div className={"mx-auto gap-4 pl-40"}>
+          
+          <div className={"mx-auto gap-4 px-40"}>
             <img
               src="https://placehold.co/100x100"
               alt="Your alt text"
-              className="h-12 w-12 rounded-full mx-auto"
+              className="h-30 w-30 rounded-full mx-auto"
             />
-            <p className="text-xs text-white text-center bg-opacity-80  bg-gray-800 rounded-full px-2">
-              {topDrivers[1].drivers.forename}
-            </p>
-            <p className={"text-center text-4xl"}>2</p>
+            <div className="py-3">
+              <p className="text-xs text-white text-center bg-opacity-80  bg-gray-800 rounded-full">
+                {topDrivers[1].drivers.forename}
+              </p>
+            </div>
+            <div className="flex flex-row justify-center">
+              <p className={" text-white text-center text-4xl"}>2</p>
+              <FontAwesomeIcon icon={faTrophy}style={{color: "#ababab",paddingTop: "5px",paddingLeft: '5px'}} />
+            </div>
           </div>
 
-          <div className={" gap-6"}>
+          <div className={" gap-6 px-40"}>
             <img
               src="https://placehold.co/100x100"
               alt="Your alt text"
-              className="h-20 w-20 rounded-full mx-auto"
+              className="h-40 w-40 rounded-full mx-auto"
             />
-            <p className="text-xs text-white text-center bg-opacity-80  bg-gray-800 rounded-full px-2">
-              {topDrivers[0].drivers.forename}
-            </p>
-            <p className={"text-center text-6xl"}>1</p>
+            <div className="py-3">
+              <p className="text-xs py text-white text-center bg-opacity-80  bg-gray-800 rounded-full ">
+                {topDrivers[0].drivers.forename}
+              </p>
+            </div>
+            <div className="flex flex-row justify-center">
+              <p className={"text-white text-center text-6xl"}>1</p>
+              <FontAwesomeIcon className ="text-yellow-500 pt-4" icon={faTrophy} />
+            </div>
+           
           </div>
 
-          <div className={"gap-2 pr-40"}>
+          <div className={"gap-2 px-40"}>
             <img
               src="https://placehold.co/100x100"
               alt="Your alt text"
-              className="h-12 w-12 rounded-full mx-auto"
+              className="h-30 w-30 rounded-full mx-auto"
             />
-            <p className="text-xs text-white text-center bg-opacity-80  bg-gray-800 rounded-full px-2">
-              {topDrivers[2].drivers.forename}
-            </p>
-            <p className={"text-center text-3xl"}>3</p>
+            <div className="py-3">
+              <p className="text-xs text-white text-center bg-opacity-80  bg-gray-800 rounded-full">
+                {topDrivers[2].drivers.forename}
+              </p>
+            </div>
+            <div className="flex flex-row justify-center">
+              <p className={"text-white text-center text-3xl"}>3</p>
+              <FontAwesomeIcon icon={faTrophy} style={{color: "#813004",paddingTop: "5px",paddingLeft: '5px'}} />
+            </div>
           </div>
         </div>
       )}
