@@ -16,6 +16,7 @@ const HomeView = ({ supabase }) => {
     selectedRace,
     resultsSelected,
     standingsSelected,
+    races,
     setSelectedRace,
     resultsData,
     setResultsData,
@@ -94,22 +95,25 @@ const HomeView = ({ supabase }) => {
   };
   // bg-gradient-to-b from-gray-900 via-gray-800 to-blue-900
   return (
-    <div className="bg-gradient-to-br from-gray-900 to-black h-full w-full p-32">
-      <div className="Modal">
-        <FavoritesModal />
-      </div>
-      <div className="Modal">
-        <DriverModal />
-      </div>
-      <div className="Modal">
-        <ConstructorModal />
-      </div>
-      <div className="Modal">
-        <CircuitModal />
-      </div>
-      <div className="">
-        <RaceInfoText />
-        <div className="flex flex-row mt-5">
+    <div className="">
+      <div className="bg-gradient-to-br from-gray-900 to-black h-max w-full p-32">
+        <div className="Modal">
+          <FavoritesModal />
+        </div>
+        <div className="Modal">
+          <DriverModal />
+        </div>
+        <div className="Modal">
+          <ConstructorModal />
+        </div>
+        <div className="Modal">
+          <CircuitModal />
+        </div>
+        <div className="w-full">
+          <RaceInfoText />
+        </div>
+
+        <div className="flex flex-row mt-4">
           <RacesSection />
 
           {!resultsSelected && !standingsSelected ? (

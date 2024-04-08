@@ -17,6 +17,14 @@ const Table = ({ data, onDriverClick, onConstructorClick }) => {
     );
   };
 
+  const renderDNF = (row) => {
+    if (row.position === null) {
+      return <span className="">DNF</span>;
+    } else {
+      return;
+    }
+  };
+
   // Helper function to render clickable constructor span
   const renderConstructor = (constructor, onClick) => {
     return (
@@ -53,8 +61,8 @@ const Table = ({ data, onDriverClick, onConstructorClick }) => {
               key={rowIndex}
               className={
                 rowIndex % 2 === 0
-                  ? "table-color  border-b border-slate-400"
-                  : "table-color  border-b border-slate-400"
+                  ? "table-color  border-b border-slate-600"
+                  : "table-color  border-b border-slate-600"
               }
             >
               {Object.entries(row).map(([key, value], colIndex) => {
@@ -65,6 +73,8 @@ const Table = ({ data, onDriverClick, onConstructorClick }) => {
                         ? renderDriver(row, onDriverClick)
                         : key === "constructor"
                         ? renderConstructor(row, onConstructorClick)
+                        : key === "position" && value === null
+                        ? renderDNF(row)
                         : value}
                     </td>
                   );

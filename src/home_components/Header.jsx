@@ -1,6 +1,7 @@
 import React from "react";
 import { AppContext } from "../Context";
 import { useContext } from "react";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const RaceInfoText = ({}) => {
   const {
@@ -38,7 +39,7 @@ const RaceInfoText = ({}) => {
   };
 
   return (
-    <div className="border-2 flex flex-row justify-between w-full border-2 border-slate-700 p-4 w-full rounded-md">
+    <div className="flex flex-row justify-between p-4 w-full border-slate-600 border-b">
       <div>
         {resultsSelected ? (
           <h1 className="text-start text-3xl text-slate-200">
@@ -46,7 +47,12 @@ const RaceInfoText = ({}) => {
               className="hover:underline rounded-md"
               onClick={() => handleYearButton()}
             >
-              {<h1 className="text-stone-400">{`${selectedSeason}`}</h1>}
+              {
+                <h1 className="text-slate-400">
+                  <ArrowBackIcon sx={{ fontSize: "1em" }} />
+                  {`${selectedSeason}`}
+                </h1>
+              }
             </button>
 
             {!selectedRace ? {} : ` | ${selectedRace.name}`}
@@ -127,20 +133,26 @@ const RaceInfoText = ({}) => {
         {driverFavList.length == 0 &&
         circuitFavList.length == 0 &&
         constructorFavList.length == 0 ? (
-          <div className="flex flex-row space-x-4 justify-center items-center mr-4">
+          <div className="flex flex-row space-x-4 justify-center items-center pl-12">
             {" "}
-            <button className="opacity-25 bg-slate-100 p-4">Favorites</button>
-            <button className="h-full w-full bg-slate-100 p-4">About</button>
+            <button className="opacity-25 text-slate-900 text-xl bg-slate-50 border-2 p-2 rounded-md">
+              Favorites
+            </button>
+            <button className="text-slate-100 font-bold text-xl border-2 border-slate-600 hover:bg-slate-800 p-2 border-2 border-slate-800  rounded-md">
+              About
+            </button>
           </div>
         ) : (
-          <div className="flex flex-row space-x-4 justify-center items-center mr-4">
+          <div className="flex flex-row space-x-4 justify-center items-center">
             <button
-              className="h-full w-full bg-slate-100 p-4"
+              className="text-slate-100 font-bold text-xl border-2 border-slate-600 hover:bg-slate-800 p-2 border-2 border-slate-800  rounded-md"
               onClick={() => setFavoritesModalOpen(true)}
             >
               Favorites
             </button>
-            <button className="h-full w-full bg-slate-100 p-4">About</button>
+            <button className="text-slate-100 font-bold text-xl border-2 border-slate-600 hover:bg-slate-800 p-2 border-2 border-slate-800  rounded-md">
+              About
+            </button>
           </div>
         )}
       </div>

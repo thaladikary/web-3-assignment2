@@ -6,31 +6,15 @@ import ResultsButton from "./ResultsButton";
 import StandingsButton from "./StandingsButton";
 
 const RaceItem = ({ race, index }) => {
- 
-  const {
-    setResultsSelected,
-    setTopDrivers,
-    setStandingsSelected,
-    setQualifying,
-    setSelectedRace,
-    setResultsData,
-    setCircuit,
-    setDriverInfo,
-  } = useContext(AppContext);
-
-
   const [openItems, setOpenItems] = useState([]);
 
   const handleClick = (index) => {
     setOpenItems((prevState) => {
-      // Create a copy of the openItems array
-      const newState = [...prevState];
-      // Toggle the state of the clicked item
-      newState[index] = !newState[index];
+      const newState = [...prevState]; // create copy of the open items array
+      newState[index] = !newState[index]; // toggle the state of the clicked item
       return newState;
     });
   };
-
 
   return (
     <div className="">

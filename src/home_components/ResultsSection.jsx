@@ -28,14 +28,14 @@ const ResultsSection = ({ handleConstructorClick, handleDriverClick }) => {
   } = useContext(AppContext);
 
   return (
-    <div className="flex flex-col justify-center items-center w-full space-x-8 space-y-8">
+    <div className="flex flex-col justify-center items-center w-full space-x-8 space-y-8 ">
       {/* Top 3 drivers display Section */}
       <div className="w-full space-x-8 ml-8">
         <TopThreeDrivers />
       </div>
-
+      <div className="w-full border-b border-slate-600"></div>
       {/* Results and Qualifying Tables Section */}
-      <div className="flex flex-row w-full border-2 border-slate-700 rounded-md justify-center space-x-2">
+      <div className="flex flex-row w-full rounded-md justify-center space-x-2">
         {/* Results Table Section */}
         <div className="flex-2 text-slate-100 rounded-md p-4">
           <h1 className="font-bold text-3xl m-2">Results Table</h1>
@@ -44,7 +44,6 @@ const ResultsSection = ({ handleConstructorClick, handleDriverClick }) => {
             handleConstructorClick={handleConstructorClick}
           />
         </div>
-        <div className="h-full border-x border-slate-700"></div>
 
         {/* Qualifying Table Section */}
         <div className="flex-3 text-slate-100 rounded-md p-4">

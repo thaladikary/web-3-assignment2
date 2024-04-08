@@ -33,8 +33,7 @@ const RacesSection = () => {
   return (
     <div className="sticky top-0 bg-slate-700 rounded-md text-slate-50 w-max h-max">
       {!races ? (
-        // <CircularProgress className="m-8" />
-        <div></div>
+        <CircularProgress className="m-8" />
       ) : (
         <Box>
           {races.map((race, index) => (
