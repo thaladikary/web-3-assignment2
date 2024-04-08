@@ -31,20 +31,18 @@ const RaceInfoText = ({}) => {
     setDriverStandings,
     setConstructorStandings,
     AboutUsModal,
-    setAboutUsModalOpen
-    
+    setAboutUsModalOpen,
   } = useContext(AppContext);
 
   const handleYearButton = () => {
     setSelectedSeason(false);
-     setResultsData();
-     setStandingsSelected(false)
-     setResultsSelected(false)
-     setTopDrivers();
-     setQualifying();
-     setDriverStandings()
-     setConstructorStandings()
-     
+    setStandingsSelected(false);
+    setResultsSelected(false);
+    // setTopDrivers();
+    // setQualifying();
+    // setResultsData();
+    // setDriverStandings();
+    // setConstructorStandings();
   };
 
   return (
@@ -97,7 +95,12 @@ const RaceInfoText = ({}) => {
               className="hover:underline rounded-md text-stone-400"
               onClick={() => handleYearButton()}
             >
-              {<h1 className="text-stone-400">{`${selectedSeason}`}</h1>}
+              {
+                <h1 className="text-slate-400">
+                  <ArrowBackIcon sx={{ fontSize: "1em" }} />
+                  {`${selectedSeason}`}
+                </h1>
+              }
             </button>
 
             {!selectedRace ? {} : ` | ${selectedRace.name} `}
@@ -138,18 +141,18 @@ const RaceInfoText = ({}) => {
           </h1>
         )}
       </div>
-      <div>
+      <div className="flex space-x-4">
         {driverFavList.length == 0 &&
         circuitFavList.length == 0 &&
         constructorFavList.length == 0 ? (
-          <div className="flex flex-row space-x-4 justify-center items-center pl-12">
+          <div className="">
             {" "}
             <button className="opacity-25 text-slate-900 text-xl bg-slate-50 border-2 p-2 rounded-md">
               Favorites
             </button>
           </div>
         ) : (
-          <div className="flex flex-row space-x-4 justify-center items-center">
+          <div className="">
             <button
               className="text-slate-100 font-bold text-xl border-2 border-slate-600 hover:bg-slate-800 p-2 border-2 border-slate-800  rounded-md"
               onClick={() => setFavoritesModalOpen(true)}
@@ -158,10 +161,14 @@ const RaceInfoText = ({}) => {
             </button>
           </div>
         )}
-        <button className="text-slate-100 font-bold text-xl border-2 border-slate-600 hover:bg-slate-800 p-2 border-2 border-slate-800  rounded-md"
-                onClick={() => setAboutUsModalOpen(true)} >
-              About
-        </button>
+        <div className="">
+          <button
+            className="text-slate-100 font-bold text-xl border-2 border-slate-600 hover:bg-slate-800 p-2 border-2 border-slate-800  rounded-md"
+            onClick={() => setAboutUsModalOpen(true)}
+          >
+            About
+          </button>
+        </div>
       </div>
     </div>
   );

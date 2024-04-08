@@ -18,7 +18,6 @@ const StandingsButton = ({ race }) => {
   } = useContext(AppContext);
 
   const handleStandingsButton = (currRace) => {
-    console.log(currRace);
     setSelectedRace(currRace);
     setResultsSelected(false);
     setStandingsSelected(true);

@@ -91,7 +91,10 @@ const ConstructorModal = () => {
                 <h1 className="text-slate-400">Drivers:</h1>
                 {currentConstructor.map((c) => {
                   return (
-                    <div className="flex justify-between" key={c.drivers.driverRef}>
+                    <div
+                      className="flex justify-between"
+                      key={c.drivers.driverRef}
+                    >
                       <div className="flex text-slate-100">
                         <p className="pr-1 ">{`${c.drivers.forename}`}</p>
                         <p className="font-bold">{` ${c.drivers.surname}`}</p>
@@ -119,7 +122,10 @@ const ConstructorModal = () => {
               <div>
                 <p className="text-slate-400 mt-4">More info:</p>
                 <p className="text-slate-100 underline">
-                  <a href={currentConstructor[0].constructors.url}>
+                  <a
+                    href={currentConstructor[0].constructors.url}
+                    target="#blank"
+                  >
                     Wikipedia link
                   </a>
                 </p>

@@ -16,9 +16,9 @@ const QualifyingTable = ({
 
   return (
     <div className="">
-      {!qualifyingData ? (
+      {!qualifyingData && !driverData ? (
         // <CircularProgress className="m-8" />
-       <div></div>
+        <div></div>
       ) : (
         <ReuseableTable
           data={qualifyingData}

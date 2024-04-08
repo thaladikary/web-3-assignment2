@@ -56,7 +56,7 @@ const FavoritesModal = () => {
           <div className="text-slate-100">You have no favorites added!</div>
         ) : (
           <div className="p-4">
-            <div className="flex block flex-row justify-between space-x-4 mb-8 border-b-2">
+            <div className="flex block flex-row justify-between space-x-4 mb-8 border-b border-slate-600">
               <div className="text-slate-100 font-bold text-3xl ">
                 Favorites List
               </div>
@@ -108,7 +108,7 @@ const FavoritesModal = () => {
                 <ul>
                   {circuitFavList.map((circuit) => (
                     <li key={circuit.circuitRef} className="mb-2">
-                      {circuit.name} 
+                      {circuit.name}
                     </li>
                   ))}
                 </ul>
