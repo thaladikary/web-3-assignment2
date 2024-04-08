@@ -21,7 +21,7 @@ const LoginForm = () => {
     <Box
       width={"50vw"}
       height={"100vh"}
-      className="flex justify-center items-center bg-zinc-900"
+      className="flex justify-center items-center bg-gradient-to-br from-gray-900 to-black h-max w-full"
     >
       <Box width={"25vw"} height={"50vh"} className="flex flex-col p-10">
         <h3 className="text-slate-100 text-center font-bold text-4xl mt-10 mb-10">

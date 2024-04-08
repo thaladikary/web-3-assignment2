@@ -51,7 +51,7 @@ const FilterSection = ({ supabase }) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen w-screen bg-zinc-900">
+    <div className="flex flex-col justify-center items-center h-screen w-screen bg-gradient-to-br from-gray-900 to-black h-max w-full">
       <h1 className="text-slate-100 text-center font-bold text-4xl">
         Select a season to begin
       </h1>
