@@ -39,6 +39,7 @@ const ResultsButton = ({ race }) => {
   };
 
   const fetchQualifyingtData = async (raceId) => {
+    console.log(raceId)
     try {
       const response = await fetch(
         `https://w2024-assign1.glitch.me/api/qualifying/${raceId}`
@@ -66,10 +67,12 @@ const ResultsButton = ({ race }) => {
   };
 
   const handleResultsButton = (currRace) => {
+    setResultsData();
     setSelectedRace(currRace);
     setStandingsSelected(false);
     setResultsSelected(true);
     fetchResultData(currRace.raceId);
+    setQualifying();
     fetchQualifyingtData(currRace.raceId);
     fetchCircuitData(currRace.circuitId);
   };
@@ -80,22 +83,26 @@ const ResultsButton = ({ race }) => {
   };
 
   const filterQualifyingtData = (qualifyingData) => {
-    const filteredData = qualifyingData.map((item) => {
-      const { position, drivers, constructors, q1, q2, q3 } = item;
-      const filteredItem = {
-        position,
-        driver: `${drivers.forename} ${drivers.surname}`,
-        constructor: constructors.name,
-        q1,
-        q2,
-        q3,
-        driverRef: `${drivers.driverRef}`,
-        constructorRef: constructors.constructorRef,
-      };
-      return filteredItem;
-    });
 
-    return filteredData;
+    if(qualifyingData){
+      const filteredData = qualifyingData.map((item) => {
+        const { position, drivers, constructors, q1, q2, q3 } = item;
+        const filteredItem = {
+          position,
+          driver: `${drivers.forename} ${drivers.surname}`,
+          constructor: constructors.name,
+          q1,
+          q2,
+          q3,
+          driverRef: `${drivers.driverRef}`,
+          constructorRef: constructors.constructorRef,
+        };
+        return filteredItem;
+      });
+      
+      return filteredData;
+    }
+
   };
 
   const filterResultFields = (resultData) => {

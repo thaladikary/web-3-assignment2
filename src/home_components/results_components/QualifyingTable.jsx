@@ -17,7 +17,8 @@ const QualifyingTable = ({
   return (
     <div className="">
       {!qualifyingData ? (
-        <CircularProgress className="m-8" />
+        // <CircularProgress className="m-8" />
+       <div></div>
       ) : (
         <ReuseableTable
           data={qualifyingData}

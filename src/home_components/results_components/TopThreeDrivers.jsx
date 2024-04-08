@@ -36,7 +36,8 @@ const TopThreeDrivers = () => {
     >
       <h1 className="text-white pb-8">Top 3 Drivers</h1>
       {!topDrivers ? (
-        <CircularProgress className="m-8" />
+        // <CircularProgress className="m-8" />
+        <div></div>
       ) : (
         <div className="flex justify-evenly">
           <div className={"mx-auto gap-4 px-40"}>

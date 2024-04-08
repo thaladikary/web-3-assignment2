@@ -9,7 +9,7 @@ const RaceInfoText = ({}) => {
     setSelectedView,
     resultsSelected,
     setSelectedSeason,
-    setResultSelected,
+    setResultsSelected,
     standingsSelected,
     setStandingsSelected,
     selectedSeason,
@@ -28,14 +28,23 @@ const RaceInfoText = ({}) => {
     setConstructorFavList,
     circuitFavList,
     setCircuitFavList,
+    setDriverStandings,
+    setConstructorStandings,
+    AboutUsModal,
+    setAboutUsModalOpen
+    
   } = useContext(AppContext);
 
   const handleYearButton = () => {
     setSelectedSeason(false);
-    // setResultsData();
-    // setStandingsData();
-    // setTopDrivers();
-    // setQualifying();
+     setResultsData();
+     setStandingsSelected(false)
+     setResultsSelected(false)
+     setTopDrivers();
+     setQualifying();
+     setDriverStandings()
+     setConstructorStandings()
+     
   };
 
   return (
@@ -138,9 +147,6 @@ const RaceInfoText = ({}) => {
             <button className="opacity-25 text-slate-900 text-xl bg-slate-50 border-2 p-2 rounded-md">
               Favorites
             </button>
-            <button className="text-slate-100 font-bold text-xl border-2 border-slate-600 hover:bg-slate-800 p-2 border-2 border-slate-800  rounded-md">
-              About
-            </button>
           </div>
         ) : (
           <div className="flex flex-row space-x-4 justify-center items-center">
@@ -150,11 +156,12 @@ const RaceInfoText = ({}) => {
             >
               Favorites
             </button>
-            <button className="text-slate-100 font-bold text-xl border-2 border-slate-600 hover:bg-slate-800 p-2 border-2 border-slate-800  rounded-md">
-              About
-            </button>
           </div>
         )}
+        <button className="text-slate-100 font-bold text-xl border-2 border-slate-600 hover:bg-slate-800 p-2 border-2 border-slate-800  rounded-md"
+                onClick={() => setAboutUsModalOpen(true)} >
+              About
+        </button>
       </div>
     </div>
   );

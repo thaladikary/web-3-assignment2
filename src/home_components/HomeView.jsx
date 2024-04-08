@@ -9,6 +9,8 @@ import DriverModal from "./modal_components/DriverModal";
 import CircuitModal from "./modal_components/CircuitModal";
 import ConstructorModal from "./modal_components/ConstructorModal";
 import FavoritesModal from "./modal_components/FavoritesModal";
+import TopThreeDrivers from "./results_components/TopThreeDrivers";
+import AboutUsModal from "./modal_components/AboutUsModal";
 const HomeView = ({ supabase }) => {
   //results by is empty
 
@@ -34,6 +36,8 @@ const HomeView = ({ supabase }) => {
     setCurrentConstructor,
     driverInfo,
     currentConstructor,
+    qualifyingData,
+    topDrivers,
   } = useContext(AppContext);
 
   const handleDriverClick = (driver) => {
@@ -94,11 +98,16 @@ const HomeView = ({ supabase }) => {
     setDriverData(currentDriver[0]);
   };
   // bg-gradient-to-b from-gray-900 via-gray-800 to-blue-900
+  //bg-gradient-to-br from-gray-900 to-black
   return (
     <div className="">
-      <div className="bg-gradient-to-br from-gray-900 to-black h-max w-full p-32">
+      
+      <div className="bg-gradient-to-br from-gray-900 to-black min-h-screen w-full p-32">
         <div className="Modal">
           <FavoritesModal />
+        </div>
+        <div>
+          <AboutUsModal/>
         </div>
         <div className="Modal">
           <DriverModal />
@@ -112,11 +121,12 @@ const HomeView = ({ supabase }) => {
         <div className="w-full">
           <RaceInfoText />
         </div>
+        
 
         <div className="flex flex-row mt-4">
           <RacesSection />
 
-          {!resultsSelected && !standingsSelected ? (
+          {!resultsSelected && !standingsSelected && !resultsData && !qualifyingData && !topDrivers ? (
             <div className="text-slate-400 text-4xl pl-12">
               Please select a race or view its result and standings
             </div>

@@ -28,7 +28,8 @@ const ResultsTable = ({ handleDriverClick, handleConstructorClick }) => {
   return (
     <div className="">
       {!resultsData && !driverData ? (
-        <CircularProgress className="m-8" />
+        // <CircularProgress className="m-8" />
+        <div> </div>
       ) : (
         <ReuseableTable
           data={resultsData}
