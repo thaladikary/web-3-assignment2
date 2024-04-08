@@ -38,6 +38,7 @@ const FavoritesModal = () => {
   const clearFavorites = () => {
     setDriverFavList([]);
     setConstructorFavList([]);
+    setCircuitFavList([]);
   };
 
   return (
@@ -94,7 +95,7 @@ const FavoritesModal = () => {
                 </h2>
                 <ul>
                   {constructorFavList.map((c) => (
-                    <li key={c.constructors.driverRef} className="mb-2">
+                    <li key={c.constructors.constructorRef} className="mb-2">
                       {c.constructors.name}
                     </li>
                   ))}
@@ -105,9 +106,9 @@ const FavoritesModal = () => {
                   Favorite Circuits
                 </h2>
                 <ul>
-                  {driverFavList.map((driver) => (
-                    <li key={driver.drivers.driverRef} className="mb-2">
-                      {driver.drivers.forename} {driver.drivers.surname}
+                  {circuitFavList.map((circuit) => (
+                    <li key={circuit.circuitRef} className="mb-2">
+                      {circuit.name} 
                     </li>
                   ))}
                 </ul>

@@ -40,7 +40,6 @@ const ConstructorModal = () => {
   };
 
   const addToFavorites = (addedConstructor) => {
-    console.log(addedConstructor);
     if (
       !constructorFavList.find(
         (c) =>
@@ -92,7 +91,7 @@ const ConstructorModal = () => {
                 <h1 className="text-slate-400">Drivers:</h1>
                 {currentConstructor.map((c) => {
                   return (
-                    <div className="flex justify-between">
+                    <div className="flex justify-between" key={c.drivers.driverRef}>
                       <div className="flex text-slate-100">
                         <p className="pr-1 ">{`${c.drivers.forename}`}</p>
                         <p className="font-bold">{` ${c.drivers.surname}`}</p>
