@@ -30,7 +30,7 @@ const ResultsSection = ({ handleConstructorClick, handleDriverClick }) => {
   return (
     <div className="flex flex-col justify-center items-center w-full space-x-8 space-y-8">
       {/* Top 3 drivers display Section */}
-      <div className="w-full space-x-8 ml-8">
+      <div className="w-full space-x-8 ml-8 font-bold text-3xl m-2">
         <TopThreeDrivers />
       </div>
 
