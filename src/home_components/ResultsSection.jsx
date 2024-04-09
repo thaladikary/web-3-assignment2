@@ -1,34 +1,11 @@
 import React from "react";
-import { AppContext } from "../Context";
-import { useContext } from "react";
 import QualifyingTable from "./results_components/QualifyingTable";
 import ResultsTable from "./results_components/ResultsTable";
 import TopThreeDrivers from "./results_components/TopThreeDrivers";
-import Modal from "@mui/material/Modal";
-import DriverModal from "./modal_components/DriverModal";
 
 const ResultsSection = ({ handleConstructorClick, handleDriverClick }) => {
-  const {
-    selectedRace,
-    setSelectedRace,
-    resultsData,
-    setResultsData,
-    driverData,
-    setDriverData,
-    circuit,
-    setCircuit,
-    setOpenModal,
-    driverModal,
-    setDriverModalOpen,
-    constructorModal,
-    setConstructorModalOpen,
-    circuitModal,
-    setCircuitModalOpen,
-    setCurrentConstructor,
-  } = useContext(AppContext);
-
-  // This is our results section componet that will have three other components within this that will display only the corresponding results 
-  // data selected from the race 
+  // This is our results section componet that will have three other components within this that will display only the corresponding results
+  // data selected from the race
   return (
     <div className="flex flex-col justify-center items-center w-full space-x-8 space-y-8 ">
       {/* Top 3 drivers display Section */}

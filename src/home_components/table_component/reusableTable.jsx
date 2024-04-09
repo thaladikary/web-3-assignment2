@@ -9,25 +9,7 @@ import { useState } from "react";
 const Table = ({ data, onDriverClick, onConstructorClick }) => {
   const [isDescending, setIsDescending] = useState(true);
 
-  const {
-    selectedRace,
-    setSelectedRace,
-    resultsData,
-    setResultsData,
-    driverData,
-    setDriverData,
-    circuit,
-    setCircuit,
-    setQualifying,
-    setOpenModal,
-    driverModal,
-    setDriverModalOpen,
-    constructorModal,
-    setConstructorModalOpen,
-    circuitModal,
-    setCircuitModalOpen,
-    setCurrentConstructor,
-  } = useContext(AppContext);
+  const { setResultsData, setQualifying } = useContext(AppContext);
 
   // Helper function to render clickable driver span
   const renderDriver = (driverObj, onClick) => {

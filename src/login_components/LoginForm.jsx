@@ -4,13 +4,11 @@ import { useContext } from "react";
 import { AppContext } from "../Context";
 import React from "react";
 import Button from "@mui/material/Button";
-import SendIcon from "@mui/icons-material/Send";
 
 const LoginForm = () => {
-
   const { setLoggedIn } = useContext(AppContext);
 
-  // Handles the button click and sets the setLoggedIn state to true 
+  // Handles the button click and sets the setLoggedIn state to true
   const handleLogin = () => {
     setLoggedIn(true);
   };
@@ -19,8 +17,8 @@ const LoginForm = () => {
     margin: "5px",
   });
 
-  // This will return a Box component from Mui that will have display the Login in button and Register Button 
-  // No real check if they entered in correct email format 
+  // This will return a Box component from Mui that will have display the Login in button and Register Button
+  // No real check if they entered in correct email format
   return (
     <Box
       width={"50vw"}

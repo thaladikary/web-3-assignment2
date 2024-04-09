@@ -1,13 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { AppContext } from "../Context";
 
-import {
-  ListSubheader,
-  List,
-  CircularProgress,
-  Box,
-  Button,
-} from "@mui/material";
+import { CircularProgress, Box } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import RaceItem from "./racesection_components/RaceItem";
@@ -15,8 +9,7 @@ import RaceItem from "./racesection_components/RaceItem";
 //
 const RacesSection = () => {
   const [isDescending, setIsDescending] = useState(true);
-  const { races, setRaces, selectedSeason, setSelectedSeason } =
-    useContext(AppContext);
+  const { races, setRaces, selectedSeason } = useContext(AppContext);
 
   // This will fetch data from our glitch api, the selectedSeason has been set in our filtersection component
   // so now we will use that state in our endpoint

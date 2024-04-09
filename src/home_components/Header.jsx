@@ -5,8 +5,6 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const RaceInfoText = ({}) => {
   const {
-    selectedView,
-    setSelectedView,
     resultsSelected,
     setSelectedSeason,
     setResultsSelected,
@@ -14,23 +12,12 @@ const RaceInfoText = ({}) => {
     setStandingsSelected,
     selectedSeason,
     selectedRace,
-    setResultsData,
-    setStandingsData,
-    setTopDrivers,
-    setQualifying,
-    setRaces,
     circuit,
     setCircuitModalOpen,
     setFavoritesModalOpen,
     driverFavList,
-    setDriverFavList,
     constructorFavList,
-    setConstructorFavList,
     circuitFavList,
-    setCircuitFavList,
-    setDriverStandings,
-    setConstructorStandings,
-    AboutUsModal,
     setAboutUsModalOpen,
   } = useContext(AppContext);
 
@@ -38,11 +25,6 @@ const RaceInfoText = ({}) => {
     setSelectedSeason(false);
     setStandingsSelected(false);
     setResultsSelected(false);
-    // setTopDrivers();
-    // setQualifying();
-    // setResultsData();
-    // setDriverStandings();
-    // setConstructorStandings();
   };
 
   return (

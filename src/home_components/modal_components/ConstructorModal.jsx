@@ -5,21 +5,14 @@ import { AppContext } from "../../Context";
 import { useContext } from "react";
 import { CircularProgress } from "@mui/material";
 import ReactCountryFlag from "react-country-flag";
-import { Link } from "@mui/icons-material";
 import CloseIcon from "@mui/icons-material/Close";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 const ConstructorModal = () => {
   const {
-    driverModal,
-    driverData,
-    setDriverModalOpen,
     constructorModal,
     setConstructorModalOpen,
-    circuitModal,
-    setCircuitModalOpen,
     currentConstructor,
-    setCurrentConstructor,
     setConstructorFavList,
     constructorFavList,
   } = useContext(AppContext);
@@ -35,8 +28,8 @@ const ConstructorModal = () => {
     borderRadius: "6px",
     p: 4,
   };
-  
-  // This will handle when modal setting the state to close the modal 
+
+  // This will handle when modal setting the state to close the modal
   const handleModalClose = () => {
     setConstructorModalOpen(false);
   };
@@ -55,9 +48,9 @@ const ConstructorModal = () => {
     handleModalClose();
   };
 
-  // Using a Mui component called Modal when triggered will display all the imformation about the selected constructor. 
+  // Using a Mui component called Modal when triggered will display all the imformation about the selected constructor.
   // We are using additional component called ReactCountryFlag that will display Flag for that corresponding constructor
-  // in our supabase we had to add the countrycode to every constructor table depending on their country, this was added extra we did 
+  // in our supabase we had to add the countrycode to every constructor table depending on their country, this was added extra we did
   // here is the link to that component  https://www.npmjs.com/package/react-country-flag
   return (
     <Modal

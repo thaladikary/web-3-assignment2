@@ -1,16 +1,14 @@
 import React from "react";
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { AppContext } from "../../Context.jsx";
-import CircularProgress from "@mui/material/CircularProgress";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrophy } from "@fortawesome/free-solid-svg-icons";
 
 const TopThreeDrivers = () => {
-  const { selectedRace, setSelectedRace, topDrivers, setTopDrivers } =
-    useContext(AppContext);
+  const { topDrivers } = useContext(AppContext);
 
-
-  // This will display the top driver drivers based on the topDrivers state 
+  // This will display the top driver drivers based on the topDrivers state
   return (
     <div
       className={

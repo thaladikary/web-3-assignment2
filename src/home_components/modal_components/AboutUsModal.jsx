@@ -1,11 +1,8 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import { useState, useEffect } from "react";
 import { AppContext } from "../../Context";
 import { useContext } from "react";
-
-import CloseIcon from "@mui/icons-material/Close";
 
 const AboutUsModal = () => {
   const { AboutUsModal, setAboutUsModalOpen } = useContext(AppContext);
@@ -22,14 +19,13 @@ const AboutUsModal = () => {
     p: 4,
   };
 
-  // This will handle when modal setting the state to close the modal 
+  // This will handle when modal setting the state to close the modal
   const handleModalClose = () => {
     setAboutUsModalOpen(false);
   };
 
-
   // Using a Mui component called Modal when triggered will display all the imformation about this project
-  // It will also have a hyperlink connected to this project github repo 
+  // It will also have a hyperlink connected to this project github repo
   return (
     <Modal
       open={AboutUsModal}

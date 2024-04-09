@@ -12,11 +12,6 @@ import "leaflet/dist/leaflet.css";
 
 const CircuitModal = () => {
   const {
-    driverModal,
-    driverData,
-    setDriverModalOpen,
-    constructorModal,
-    setConstructorModalOpen,
     circuitModal,
     setCircuitModalOpen,
     circuit,
@@ -37,7 +32,7 @@ const CircuitModal = () => {
     p: 4,
   };
 
-   // This will handle when modal setting the state to close the modal 
+  // This will handle when modal setting the state to close the modal
   const handleModalClose = () => {
     setCircuitModalOpen(false);
   };
@@ -50,9 +45,9 @@ const CircuitModal = () => {
     handleModalClose();
   };
 
-  // Using a Mui component called Modal when triggered will display all the imformation about the selected circuit. 
+  // Using a Mui component called Modal when triggered will display all the imformation about the selected circuit.
   // We are using additional component called ReactCountryFlag that will display Flag for that corresponding circuit
-  // in our supabase we had to add the countrycode to every circuit table depending on their country, this was added extra we did 
+  // in our supabase we had to add the countrycode to every circuit table depending on their country, this was added extra we did
   // here is the link to that component  https://www.npmjs.com/package/react-country-flag
   return (
     <Modal

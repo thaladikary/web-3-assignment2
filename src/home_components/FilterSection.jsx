@@ -11,14 +11,7 @@ import {
 import CircularProgress from "@mui/material/CircularProgress";
 
 const FilterSection = ({ supabase }) => {
-  const {
-    seasons,
-    setSeasons,
-    selectedSeason,
-    setSelectedSeason,
-    setSelectedRace,
-    setResultsData,
-  } = useContext(AppContext);
+  const { seasons, setSeasons, setSelectedSeason } = useContext(AppContext);
 
   useEffect(() => {
     const fetchSeasonsData = async () => {

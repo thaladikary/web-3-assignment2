@@ -1,27 +1,18 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import { useState, useEffect } from "react";
 import { AppContext } from "../../Context";
 import { useContext } from "react";
 import { CircularProgress } from "@mui/material";
 import ReactCountryFlag from "react-country-flag";
 import CloseIcon from "@mui/icons-material/Close";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import Snackbar from "@mui/material/Snackbar";
-import SnackbarContent from "@mui/material/SnackbarContent";
 
 const DriverModal = () => {
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-
   const {
     driverData,
     driverModal,
     setDriverModalOpen,
-    constructorModal,
-    setConstructorModalOpen,
-    circuitModal,
-    setCircuitModalOpen,
     setDriverFavList,
     driverFavList,
   } = useContext(AppContext);
@@ -38,7 +29,7 @@ const DriverModal = () => {
     p: 4,
   };
 
-   // This will handle when modal setting the state to close the modal 
+  // This will handle when modal setting the state to close the modal
   const handleModalClose = () => {
     setDriverModalOpen(false);
   };
@@ -55,9 +46,9 @@ const DriverModal = () => {
     handleModalClose();
   };
 
-  // Using a Mui component called Modal when triggered will display all the imformation about the selected driver. 
+  // Using a Mui component called Modal when triggered will display all the imformation about the selected driver.
   // We are using additional component called ReactCountryFlag that will display Flag for that corresponding driver
-  // in our supabase we had to add the countrycode to every driver table depending on their country, this was added extra we did 
+  // in our supabase we had to add the countrycode to every driver table depending on their country, this was added extra we did
   // here is the link to that component  https://www.npmjs.com/package/react-country-flag
 
   return (
