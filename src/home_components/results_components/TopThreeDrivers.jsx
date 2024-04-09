@@ -9,25 +9,8 @@ const TopThreeDrivers = () => {
   const { selectedRace, setSelectedRace, topDrivers, setTopDrivers } =
     useContext(AppContext);
 
-  const fetchResultData = async () => {
-    try {
-      const response = await fetch(
-        `https://w2024-assign1.glitch.me/api/results/${selectedRace.raceId}`
-      );
-      let racesData = await response.json();
-      const topThreeDrivers = filterResultData(racesData);
-      setTopDrivers(topThreeDrivers);
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
-  const filterResultData = (resultData) => {
-    console.log(resultData);
-    resultData = resultData.filter((data) => data.positionOrder <= 3);
-    return resultData;
-  };
-
+  // This will display the top driver drivers based on the topDrivers state 
   return (
     <div
       className={

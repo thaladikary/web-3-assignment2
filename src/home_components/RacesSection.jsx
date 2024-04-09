@@ -12,11 +12,14 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import RaceItem from "./racesection_components/RaceItem";
 
+//
 const RacesSection = () => {
   const [isDescending, setIsDescending] = useState(true);
   const { races, setRaces, selectedSeason, setSelectedSeason } =
     useContext(AppContext);
 
+  // This will fetch data from our glitch api, the selectedSeason has been set in our filtersection component
+  // so now we will use that state in our endpoint
   useEffect(() => {
     const fetchRacesData = async () => {
       try {

@@ -30,7 +30,6 @@ const Table = ({ data, onDriverClick, onConstructorClick }) => {
 
   // Helper function to render clickable driver span
   const renderDriver = (driverObj, onClick) => {
-    // console.log(driverObj)
     return (
       <span
         className="cursor-pointer hover:underline font-bold"
@@ -68,7 +67,7 @@ const Table = ({ data, onDriverClick, onConstructorClick }) => {
     }
   };
 
-  // Helper function to render clickable constructor span
+  // Helper function to render clickable constructor span and will also display the constructor name
   const renderConstructor = (constructor, onClick) => {
     return (
       <span
@@ -80,6 +79,16 @@ const Table = ({ data, onDriverClick, onConstructorClick }) => {
     );
   };
 
+  // This is our main table that is able to handle Driver,Constructor,Qualifying and Results data.
+  //  This is like super table that will take corresponding keys from the object and set that as
+  // the table heading. Then from their it will take the values to that corresponding key and print it
+  //  out in that field. This will also set a onClick behavior to Driver and Constructor which will be passed
+  // from the parent component as props. That will handle fetching the data.
+
+  //Object.keys(data[0]).map will handle setting all the column headers
+  //Object.entries(row).map will handle displaying the data for that header/key
+  // This will also set onClick behavior to driver and constructor fields
+  // and finally the renderDNF will handle if the position has no value and set that to DNF
   return (
     <div className="">
       <table className="">
