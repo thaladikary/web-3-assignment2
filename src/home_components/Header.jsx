@@ -103,7 +103,9 @@ const RaceInfoText = ({}) => {
               }
             </button>
 
-            {!selectedRace ? {} : ` | ${selectedRace.name} `}
+            {!selectedRace
+              ? {}
+              : ` | ${selectedRace.name} | After Round ${selectedRace.round} `}
             {!circuit ? (
               <div></div>
             ) : (

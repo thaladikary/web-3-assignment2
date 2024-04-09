@@ -61,11 +61,11 @@ const RacesSection = () => {
             <button onClick={handleSort}>
               {isDescending ? (
                 <div className="text-slate-400 hover:underline">
-                  Ascending <ExpandLessIcon sx={{ fontSize: 24 }} />
+                  <ExpandLessIcon sx={{ fontSize: 32 }} />
                 </div>
               ) : (
                 <div className="text-slate-400 hover:underline">
-                  Descending <ExpandMoreIcon sx={{ fontSize: 24 }} />
+                  <ExpandMoreIcon sx={{ fontSize: 32 }} />
                 </div>
               )}
             </button>

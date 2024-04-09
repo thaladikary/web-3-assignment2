@@ -18,6 +18,7 @@ const Table = ({ data, onDriverClick, onConstructorClick }) => {
     setDriverData,
     circuit,
     setCircuit,
+    setQualifying,
     setOpenModal,
     driverModal,
     setDriverModalOpen,
@@ -39,8 +40,7 @@ const Table = ({ data, onDriverClick, onConstructorClick }) => {
       </span>
     );
   };
-  const handleSortResult = (row) => {
-    console.log(data);
+  const handleSort = (tableType) => {
     const newData = [...data];
     newData.sort((a, b) => {
       if (a.position === null && b.position === null) {
@@ -55,7 +55,12 @@ const Table = ({ data, onDriverClick, onConstructorClick }) => {
         return a.position - b.position;
       }
     });
-    setResultsData(newData);
+    if (tableType === "qualifying") {
+      setQualifying(newData);
+    } else {
+      setResultsData(newData);
+    }
+
     setIsDescending(!isDescending);
   };
 
@@ -95,19 +100,56 @@ const Table = ({ data, onDriverClick, onConstructorClick }) => {
         <thead className="bg-slate-700">
           <tr className="text-slate-100 border-slate-400">
             {Object.keys(data[0]).map((key, index) => {
-              if (key == "position") {
-                return (
-                  <th key={index} className="px-8 py-4 text-left">
-                    <button
-                      onClick={handleSortResult}
-                      className="hover:underline"
-                    >
-                      {key}
-                      <ExpandLess />
-                    </button>
-                  </th>
-                );
+              if (data[0].resultsTable) {
+                if (key === "position") {
+                  return (
+                    <th key={index} className="px-8 py-4 text-left">
+                      <button
+                        onClick={handleSort}
+                        className="hover:underline flex"
+                      >
+                        {isDescending ? (
+                          <div className="text-slate-100 hover:underline">
+                            {key}
+                            <ExpandLess sx={{ fontSize: 24 }} />
+                          </div>
+                        ) : (
+                          <div className="text-slate-100 hover:underline">
+                            {key}
+                            <ExpandMore sx={{ fontSize: 24 }} />
+                          </div>
+                        )}
+                      </button>
+                    </th>
+                  );
+                }
               }
+
+              if (data[0].qualifyingTable) {
+                if (key === "position") {
+                  return (
+                    <th key={index} className="px-8 py-4 text-left">
+                      <button
+                        onClick={() => handleSort("qualifying")}
+                        className="hover:underline"
+                      >
+                        {isDescending ? (
+                          <div className="text-slate-100 hover:underline">
+                            {key}
+                            <ExpandLess sx={{ fontSize: 24 }} />
+                          </div>
+                        ) : (
+                          <div className="text-slate-100 hover:underline">
+                            {key}
+                            <ExpandMore sx={{ fontSize: 24 }} />
+                          </div>
+                        )}
+                      </button>
+                    </th>
+                  );
+                }
+              }
+
               if (key !== "driverRef" && key !== "constructorRef") {
                 return (
                   <th key={index} className="px-8 py-4 text-left">

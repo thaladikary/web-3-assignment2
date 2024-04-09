@@ -15,8 +15,8 @@ const ResultsButton = ({ race }) => {
     setDriverInfo,
   } = useContext(AppContext);
 
-  // This will fetch results data from Glitch for the corresponding raceID, this will also call helper functions that 
-  // will sort and filter the data 
+  // This will fetch results data from Glitch for the corresponding raceID, this will also call helper functions that
+  // will sort and filter the data
   const fetchResultData = async (raceId) => {
     try {
       const response = await fetch(
@@ -41,8 +41,8 @@ const ResultsButton = ({ race }) => {
     return resultData;
   };
 
-   // This will fetch Qualifying data from Glitch for the corresponding raceID, this will also call helper functions that 
-  // will filter the data 
+  // This will fetch Qualifying data from Glitch for the corresponding raceID, this will also call helper functions that
+  // will filter the data
   const fetchQualifyingtData = async (raceId) => {
     try {
       const response = await fetch(
@@ -71,7 +71,7 @@ const ResultsButton = ({ race }) => {
     }
   };
 
-  // This will handle setting alot of our states initial values and also fetching the data for the corresponding results view data 
+  // This will handle setting alot of our states initial values and also fetching the data for the corresponding results view data
   const handleResultsButton = (currRace) => {
     setSelectedRace(currRace);
     setStandingsSelected(false);
@@ -89,9 +89,9 @@ const ResultsButton = ({ race }) => {
     return resultData;
   };
 
-    // The whole point of this function is to filter the Qualifying data object for our reuseableTable so that it will 
-    // only include theses fields in our table. The reason we are doing this is because our reuseableTable component will 
-    // be able to handle all different fields and values for different data. 
+  // The whole point of this function is to filter the Qualifying data object for our reuseableTable so that it will
+  // only include theses fields in our table. The reason we are doing this is because our reuseableTable component will
+  // be able to handle all different fields and values for different data.
   const filterQualifyingtData = (qualifyingData) => {
     if (qualifyingData) {
       const filteredData = qualifyingData.map((item) => {
@@ -105,6 +105,7 @@ const ResultsButton = ({ race }) => {
           q3,
           driverRef: `${drivers.driverRef}`,
           constructorRef: constructors.constructorRef,
+          qualifyingTable: true,
         };
         return filteredItem;
       });
@@ -112,9 +113,9 @@ const ResultsButton = ({ race }) => {
       return filteredData;
     }
   };
-      // The whole point of this function is to filter the Result data object for our reuseableTable so that it will 
-    // only include theses fields in our table. The reason we are doing this is because our reuseableTable component will 
-    // be able to handle all different fields and values for different data. 
+  // The whole point of this function is to filter the Result data object for our reuseableTable so that it will
+  // only include theses fields in our table. The reason we are doing this is because our reuseableTable component will
+  // be able to handle all different fields and values for different data.
   const filterResultFields = (resultData) => {
     const filteredData = resultData.map((item) => {
       const { position, drivers, constructors, laps, points, driverRef } = item;
@@ -126,6 +127,7 @@ const ResultsButton = ({ race }) => {
         points,
         driverRef: `${drivers.driverRef}`,
         constructorRef: constructors.constructorRef,
+        resultsTable: true,
       };
       return filteredItem;
     });
@@ -133,7 +135,7 @@ const ResultsButton = ({ race }) => {
     return filteredData;
   };
 
-  // When the Results Button is clicked it will handle three fetches to Results,Qualifying and CircuitData 
+  // When the Results Button is clicked it will handle three fetches to Results,Qualifying and CircuitData
   return (
     <Button
       sx={{
