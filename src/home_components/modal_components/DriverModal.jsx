@@ -38,10 +38,12 @@ const DriverModal = () => {
     p: 4,
   };
 
+   // This will handle when modal setting the state to close the modal 
   const handleModalClose = () => {
     setDriverModalOpen(false);
   };
 
+  // This will handle adding the current driver in the modal to our favorites list
   const addToFavorites = (addedDriver) => {
     if (
       !driverFavList.find(
@@ -52,6 +54,11 @@ const DriverModal = () => {
     }
     handleModalClose();
   };
+
+  // Using a Mui component called Modal when triggered will display all the imformation about the selected driver. 
+  // We are using additional component called ReactCountryFlag that will display Flag for that corresponding driver
+  // in our supabase we had to add the countrycode to every driver table depending on their country, this was added extra we did 
+  // here is the link to that component  https://www.npmjs.com/package/react-country-flag
 
   return (
     <Modal

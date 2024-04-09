@@ -31,6 +31,7 @@ export const ContextProvider = ({ children }) => {
   const [constructorFavList, setConstructorFavList] = useState([]);
   const [circuitFavList, setCircuitFavList] = useState([]);
 
+  // These are all the contexts that we are using 
   return (
     <AppContext.Provider
       value={{

@@ -27,6 +27,8 @@ const ResultsSection = ({ handleConstructorClick, handleDriverClick }) => {
     setCurrentConstructor,
   } = useContext(AppContext);
 
+  // This is our results section componet that will have three other components within this that will display only the corresponding results 
+  // data selected from the race 
   return (
     <div className="flex flex-col justify-center items-center w-full space-x-8 space-y-8 ">
       {/* Top 3 drivers display Section */}

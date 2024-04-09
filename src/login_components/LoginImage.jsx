@@ -1,6 +1,7 @@
 import React from "react";
 import { Box } from "@mui/material";
 
+// This is LoginImage component that will return Mui box containing img and hyperlink to the image 
 const LoginImage = () => {
   return (
     <Box width={"50vw"} height={"100vh"}>

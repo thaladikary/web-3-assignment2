@@ -35,12 +35,17 @@ const FavoritesModal = () => {
     p: 4,
   };
 
+  // This will handle the clear button 
   const clearFavorites = () => {
     setDriverFavList([]);
     setConstructorFavList([]);
     setCircuitFavList([]);
   };
 
+    // Using a Mui component called Modal when triggered will display all the imformation about all the favorites 
+    // when the website is first lauched the favorite button will be greyed out and you will not be able to click it 
+    // until the user favorites driver,circuit or constructor then it will display the names of the corresponding modal 
+    // favorited  
   return (
     <Modal
       open={favoritesModal}

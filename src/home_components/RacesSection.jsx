@@ -10,10 +10,13 @@ import {
 
 import RaceItem from "./racesection_components/RaceItem";
 
+// 
 const RacesSection = () => {
   const { races, setRaces, selectedSeason, setSelectedSeason } =
     useContext(AppContext);
 
+  // This will fetch data from our glitch api, the selectedSeason has been set in our filtersection component 
+  // so now we will use that state in our endpoint 
   useEffect(() => {
     const fetchRacesData = async () => {
       try {
@@ -30,6 +33,8 @@ const RacesSection = () => {
     fetchRacesData();
   }, []);
 
+  // If there is no races data then a loading animation will be set until the races data has been 
+  // loaded then it will create the RaceItem component that will pass selected race as a prop 
   return (
     <div className="sticky top-0 bg-slate-700 rounded-md text-slate-50 w-max h-max">
       {!races ? (

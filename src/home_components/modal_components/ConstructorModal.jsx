@@ -35,10 +35,13 @@ const ConstructorModal = () => {
     borderRadius: "6px",
     p: 4,
   };
+  
+  // This will handle when modal setting the state to close the modal 
   const handleModalClose = () => {
     setConstructorModalOpen(false);
   };
 
+  // This will handle adding the current Constructor in the modal to our favorites list
   const addToFavorites = (addedConstructor) => {
     if (
       !constructorFavList.find(
@@ -52,6 +55,10 @@ const ConstructorModal = () => {
     handleModalClose();
   };
 
+  // Using a Mui component called Modal when triggered will display all the imformation about the selected constructor. 
+  // We are using additional component called ReactCountryFlag that will display Flag for that corresponding constructor
+  // in our supabase we had to add the countrycode to every constructor table depending on their country, this was added extra we did 
+  // here is the link to that component  https://www.npmjs.com/package/react-country-flag
   return (
     <Modal
       open={constructorModal}
