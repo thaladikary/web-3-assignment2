@@ -32,9 +32,6 @@ const FilterSection = ({ supabase }) => {
       } catch (err) {
         console.log(err);
       }
-      // const { data, error } = await supabase.from("seasons").select();
-      // const seasonData = filterSeasonData(data);
-      // setSeasons(seasonData);
     };
 
     fetchSeasonsData();

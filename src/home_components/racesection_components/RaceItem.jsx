@@ -19,14 +19,17 @@ const RaceItem = ({ race, index }) => {
   return (
     <div className="">
       <div className="hover:bg-slate-600 hover:rounded-md">
-        {" "}
-        <ListItemButton onClick={() => handleClick(index)}>
-          <ListItemText primary={[race.round, ". ", race.name]} />
+        <ListItemButton
+          className="flex space-x-2"
+          onClick={() => handleClick(index)}
+        >
+          {/* <ListItemText primary={[race.round, race.name]} /> */}
+          <div className="text-slate-400">{race.round}</div>
+          <div className="">{race.name}</div>
         </ListItemButton>
       </div>
 
       <div className="">
-        {" "}
         <Collapse in={openItems[index]} timeout="auto" unmountOnExit>
           <List component="div">
             <ResultsButton race={race} />
