@@ -132,7 +132,12 @@ const Table = ({ data, onDriverClick, onConstructorClick }) => {
                 }
               }
 
-              if (key !== "driverRef" && key !== "constructorRef") {
+              if (
+                key !== "driverRef" &&
+                key !== "constructorRef" &&
+                key !== "qualifyingTable" &&
+                key !== "resultsTable"
+              ) {
                 return (
                   <th key={index} className="px-8 py-4 text-left">
                     {key}
